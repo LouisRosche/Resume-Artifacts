@@ -3,386 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
     <title>Louis Rosche - Data-Driven Educational Technology Portfolio</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #10b981;
-            --accent: #8b5cf6;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
-        }
+    <meta name="description" content="Data-driven educational technology leader with 9+ years classroom experience and 4 years technical expertise. Explore ML models, dashboards, and systems serving 15,000+ students.">
+    <meta name="author" content="Louis Rosche">
+    <meta name="keywords" content="educational data science, machine learning, Python, SQL, educational technology, MTSS, student intervention systems">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Louis Rosche - Data-Driven Educational Technology Portfolio">
+    <meta property="og:description" content="Educational technology leader combining 9+ years classroom experience with technical expertise in ML, data systems, and automation.">
+    <meta property="og:url" content="https://github.com/LouisRosche/Resume-Artifacts">
+    <meta name="twitter:card" content="summary_large_image">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--light);
-        }
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://github.com/LouisRosche/Resume-Artifacts">
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
 
-        .hero .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-
-        .hero .stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Navigation */
-        nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 15px;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            padding: 10px 20px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        /* Story Arc */
-        .story-arc {
-            background: white;
-            padding: 60px 20px;
-            margin-bottom: 40px;
-        }
-
-        .story-arc h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--dark);
-        }
-
-        .timeline {
-            position: relative;
-            padding: 40px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--accent));
-        }
-
-        .timeline-item {
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            text-align: right;
-            padding-right: calc(50% + 40px);
-        }
-
-        .timeline-item:nth-child(even) {
-            text-align: left;
-            padding-left: calc(50% + 40px);
-        }
-
-        .timeline-content {
-            background: var(--light);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .timeline-year {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 4px solid var(--primary);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .project-card h3 {
-            color: var(--dark);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .project-card .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 15px 0;
-        }
-
-        .tech-badge {
-            background: var(--light);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .impact-metrics {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-
-        .impact-metrics strong {
-            display: block;
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 15px;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: var(--accent);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Integration Diagram */
-        .integration-section {
-            background: white;
-            padding: 60px 20px;
-            margin: 40px 0;
-        }
-
-        .integration-diagram {
-            max-width: 900px;
-            margin: 40px auto;
-            text-align: center;
-        }
-
-        .system-flow {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 30px 0;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .system-box {
-            background: var(--light);
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid var(--primary);
-            min-width: 150px;
-            flex: 1;
-        }
-
-        .arrow {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        /* Stakeholder Views */
-        .stakeholder-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 12px 24px;
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.3s;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Contact CTA */
-        .cta-section {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            font-size: 1.1rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .tagline {
-                font-size: 1.2rem;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                text-align: left;
-                padding-left: 60px;
-                padding-right: 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "Person",
+        "name": "Louis Rosche",
+        "url": "https://github.com/LouisRosche/Resume-Artifacts",
+        "sameAs": [
+            "https://linkedin.com/in/louis-rosche",
+            "https://github.com/LouisRosche"
+        ],
+        "jobTitle": "Data-Driven Educational Technology Leader",
+        "knowsAbout": [
+            "Machine Learning",
+            "Educational Data Science",
+            "Python",
+            "SQL",
+            "System Architecture",
+            "Educational Technology"
+        ],
+        "alumniOf": "Truman State University"
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to main content - Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Hero Section -->
     <section class="hero">
         <h1>Louis Rosche</h1>
         <p class="tagline">Educational Data Scientist | ML Engineer | Systems Architect</p>
-        <p style="font-size: 1.1rem; margin: 20px 0;">
-            Transforming educational outcomes through data-driven intervention systems
+        <p class="section-subtitle" style="color: white; max-width: 600px; margin: 15px auto;">
+            I transform educational outcomes through data-driven intervention systems
         </p>
 
         <div class="stats">
@@ -406,490 +83,447 @@
     </section>
 
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <ul>
-            <li><a href="#story">My Story</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#integration">System Integration</a></li>
+            <li><a href="#integration">Integration</a></li>
             <li><a href="#stakeholders">For Stakeholders</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Story Arc -->
-    <section id="story" class="story-arc">
-        <div class="container">
-            <h2>From Classroom to Code: A Data-Driven Journey</h2>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2016-2019 | Teacher</div>
-                        <h3>The Foundation: Understanding Student Needs</h3>
-                        <p>Started as a looping 2nd-3rd grade teacher, building relationships and seeing firsthand how data could identify struggling students early. Achieved 31% improvement in student outcomes through relationship continuity.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2019-2022 | Teacher + MTSS Coordinator</div>
-                        <h3>The Problem: Manual Data is Too Slow</h3>
-                        <p>Coordinating MTSS for 200+ students, I spent hours manually compiling data. Students in crisis had to wait 48+ hours for intervention. I knew there had to be a better way.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2022-2023 | Director of Mentoring</div>
-                        <h3>The Solution: Predictive Analytics</h3>
-                        <p>Built first ML model to predict student risk 2-3 weeks early. Reduced crisis response from 48 hours to 8 hours. Processed 1,000+ data points weekly. Program effectiveness improved 47%.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2023-2024 | Data Specialist</div>
-                        <h3>The Scale: Systems for 15,000+ Children</h3>
-                        <p>Built ETL pipeline integrating 45 nonprofits. Improved metric reliability from 71% to 93%. Increased foster care transition success from 52% to 82%. Proved data systems can work at scale.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2024-Present | Science Lead & Systems Architect</div>
-                        <h3>The Integration: Full-Stack Educational Technology</h3>
-                        <p>Designing curriculum while building real-time tracking dashboards. Teaching science while architecting data pipelines. Combining educational expertise with technical depth to create systems that actually work for students.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="container">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: var(--dark);">
-            Portfolio of Impact
-        </h2>
-
-        <div class="projects-grid">
-            <!-- Project 1: Predictive Model -->
-            <div class="project-card">
-                <div class="project-icon">🤖</div>
-                <h3>Student Risk Prediction Model</h3>
-                <p>I developed an ML model processing 14 risk indicators to predict student crisis 2-3 weeks early with 95%+ accuracy.</p>
-
-                <div class="tech-stack">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">XGBoost</span>
-                    <span class="tech-badge">scikit-learn</span>
-                </div>
-
-                <div class="impact-metrics">
-                    <strong>65% faster</strong>
-                    Crisis response: 48h → 8h
-                </div>
-
-                <a href="predictive-model/demo.html" class="btn">🎮 Interactive Demo</a>
-                <a href="predictive-model/student_risk_predictor.py" class="btn btn-secondary" download>📥 Download Source (.py)</a>
-            </div>
-
-            <!-- Project 2: MTSS Dashboard -->
-            <div class="project-card">
-                <div class="project-icon">📊</div>
-                <h3>MTSS Real-Time Dashboard</h3>
-                <p>I built an interactive dashboard tracking 150+ students across Tier 2/3 interventions with same-day adjustment capability.</p>
-
-                <div class="tech-stack">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Plotly</span>
-                    <span class="tech-badge">pandas</span>
-                </div>
-
-                <div class="impact-metrics">
-                    <strong>12 hours saved</strong>
-                    Weekly data entry eliminated
-                </div>
-
-                <a href="mtss-dashboard/demo.html" class="btn">🎮 Interactive Demo</a>
-                <a href="mtss-dashboard/mtss_dashboard.py" class="btn btn-secondary" download>📥 Download Source (.py)</a>
-            </div>
-
-            <!-- Project 3: ETL Pipeline -->
-            <div class="project-card">
-                <div class="project-icon">🔄</div>
-                <h3>Nonprofit Data Integration</h3>
-                <p>I built an ETL pipeline integrating 45 organizations across 5 disparate systems, serving 15,000+ children.</p>
-
-                <div class="tech-stack">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">SQLAlchemy</span>
-                    <span class="tech-badge">PostgreSQL</span>
-                </div>
-
-                <div class="impact-metrics">
-                    <strong>85% reduction</strong>
-                    Report time: 40h → 6h<br>
-                    <strong>2,400+ inconsistencies identified</strong>
-                    Automated data quality checks
-                </div>
-
-                <a href="etl-pipeline/demo.html" class="btn">🎮 Interactive Demo</a>
-                <a href="etl-pipeline/nonprofit_data_pipeline.py" class="btn btn-secondary" download>📥 Source Code (.py)</a>
-            </div>
-
-            <!-- Project 4: Equity Tracking -->
-            <div class="project-card">
-                <div class="project-icon">⚖️</div>
-                <h3>Equity-Focused Tracking</h3>
-                <p>I designed a comprehensive system monitoring 8 educational metrics for 60+ foster care students across 12 districts.</p>
-
-                <div class="tech-stack">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Excel</span>
-                    <span class="tech-badge">pandas</span>
-                </div>
-
-                <div class="impact-metrics">
-                    <strong>+30% success</strong>
-                    School transitions: 52% → 82%<br>
-                    <strong>87% time reduction</strong>
-                    Reporting: 3 days → 4 hours
-                </div>
-
-                <a href="equity-tracking/demo.html" class="btn">🎮 Interactive Demo</a>
-                <a href="equity-tracking/equity_tracking_system.py" class="btn btn-secondary" download>📥 Source Code (.py)</a>
-            </div>
-
-            <!-- Project 5: Progress Monitoring -->
-            <div class="project-card">
-                <div class="project-icon">📈</div>
-                <h3>Automated Progress Monitoring</h3>
-                <p>I created a SQL-based system generating weekly intervention reports for 60+ Tier 2/3 students automatically.</p>
-
-                <div class="tech-stack">
-                    <span class="tech-badge">SQL</span>
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">PowerSchool</span>
-                </div>
-
-                <div class="impact-metrics">
-                    <strong>12,000+ assessments</strong>
-                    Processed weekly<br>
-                    <strong>8 hours saved</strong>
-                    100% automation achieved
-                </div>
-
-                <a href="progress-monitoring/demo.html" class="btn">🎮 Interactive Demo</a>
-                <a href="progress-monitoring/progress_monitoring_system.py" class="btn btn-secondary" download>📥 Download Source (.py)</a>
-            </div>
-
-            <!-- Project 6: Assessment Platform -->
-            <div class="project-card">
-                <div class="project-icon">📋</div>
-                <h3>Multi-Source Assessment Platform</h3>
-                <p>I built a platform that processes 1,000+ weekly data points from 5 sources to generate 120+ individualized reports.</p>
-
-                <div class="tech-stack">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">pandas</span>
-                    <span class="tech-badge">Multi-source</span>
-                </div>
-
-                <div class="impact-metrics">
-                    <strong>+47% effectiveness</strong>
-                    52% behavioral ↓, 38% academic ↑, 41% SEL ↑
-                </div>
-
-                <a href="assessment-platform/demo.html" class="btn">🎮 Interactive Demo</a>
-                <a href="assessment-platform/assessment_platform.py" class="btn btn-secondary" download>📥 Download Source (.py)</a>
-            </div>
-
-            <!-- Project 7: Workflow Automation -->
-            <div class="project-card">
-                <div class="project-icon">⚡</div>
-                <h3>Mentor Workflow Automation</h3>
-                <p>I developed a Google Apps Script automation for check-ins, scheduling, and reporting across 50+ mentors.</p>
-
-                <div class="tech-stack">
-                    <span class="tech-badge">Apps Script</span>
-                    <span class="tech-badge">Google Workspace</span>
-                </div>
-
-                <div class="impact-metrics">
-                    <strong>+28% efficiency</strong>
-                    Staff time: 8h → 5.75h<br>
-                    <strong>30% training reduction</strong>
-                    20h → 14h • 95%+ compliance
-                </div>
-
-                <a href="workflow-automation/demo.html" class="btn">🎮 Interactive Demo</a>
-                <a href="workflow-automation/mentor_workflow_automation.gs" class="btn btn-secondary" download>📥 Download Source (.gs)</a>
-            </div>
-
-            <!-- Project 8: Restorative Justice -->
-            <div class="project-card">
-                <div class="project-icon">🔄</div>
-                <h3>Restorative Justice Platform</h3>
-                <p>I created a web platform for 30+ facilitators managing 120+ annual restorative circle sessions.</p>
-
-                <div class="tech-stack">
-                    <span class="tech-badge">JavaScript</span>
-                    <span class="tech-badge">HTML/CSS</span>
-                </div>
-
-                <div class="impact-metrics">
-                    <strong>120+ sessions</strong>
-                    Standardized protocols
-                </div>
-
-                <a href="restorative-justice-platform/index.html" class="btn">🎮 Live Platform</a>
-                <a href="restorative-justice-platform/app.js" class="btn btn-secondary" download>📥 Download Source (.js)</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Integration Diagram -->
-    <section id="integration" class="integration-section">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: var(--dark);">
-                How It All Connects
-            </h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">
-                These aren't isolated projects – they're an interconnected ecosystem for data-driven student support.
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Projects Section -->
+        <section id="projects" class="container">
+            <h2 class="section-heading">Interactive Project Demos</h2>
+            <p class="section-subtitle">
+                Explore 8 production-quality systems I've built, each with live interactive demonstrations.
+                Filter by type to focus on areas of interest.
             </p>
 
-            <div class="integration-diagram">
-                <div class="system-flow">
-                    <div class="system-box">
-                        <strong>Data Collection</strong>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">
-                            PowerSchool, Google Forms, Staff Observations
-                        </p>
-                    </div>
-                    <div class="arrow">→</div>
-                    <div class="system-box">
-                        <strong>ETL Pipeline</strong>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">
-                            Clean, validate, integrate 5 sources
-                        </p>
-                    </div>
-                    <div class="arrow">→</div>
-                    <div class="system-box">
-                        <strong>ML Prediction</strong>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">
-                            95%+ accuracy risk scores
-                        </p>
-                    </div>
-                </div>
+            <!-- Project Filtering -->
+            <div class="projects-filter" role="toolbar" aria-label="Filter projects by category">
+                <button class="filter-btn active"
+                        data-filter="all"
+                        onclick="filterProjects('all')"
+                        aria-pressed="true">
+                    All Projects (8)
+                </button>
+                <button class="filter-btn"
+                        data-filter="ml-analytics"
+                        onclick="filterProjects('ml-analytics')"
+                        aria-pressed="false">
+                    ML & Analytics (3)
+                </button>
+                <button class="filter-btn"
+                        data-filter="automation"
+                        onclick="filterProjects('automation')"
+                        aria-pressed="false">
+                    Automation (3)
+                </button>
+                <button class="filter-btn"
+                        data-filter="platforms"
+                        onclick="filterProjects('platforms')"
+                        aria-pressed="false">
+                    Platforms (2)
+                </button>
+            </div>
 
-                <div class="arrow" style="display: block; text-align: center; margin: 20px 0;">↓</div>
+            <div class="projects-grid">
+                <!-- Project 1: Predictive Model -->
+                <article class="project-card" data-category="ml-analytics" aria-labelledby="project-1-title">
+                    <div class="project-icon" role="img" aria-label="Machine Learning and Artificial Intelligence">🤖</div>
+                    <h3 id="project-1-title">Student Risk Prediction Model</h3>
+                    <p>I developed an ML model processing 14 risk indicators to predict student crisis 2-3 weeks early with 95%+ accuracy.</p>
 
-                <div class="system-flow">
-                    <div class="system-box">
-                        <strong>Real-Time Dashboard</strong>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">
-                            MTSS tracking, progress monitoring
-                        </p>
+                    <div class="tech-stack" role="list" aria-label="Technologies used">
+                        <span class="tech-badge" role="listitem">Python</span>
+                        <span class="tech-badge" role="listitem">XGBoost</span>
+                        <span class="tech-badge" role="listitem">scikit-learn</span>
                     </div>
-                    <div class="arrow">→</div>
-                    <div class="system-box">
-                        <strong>Intervention</strong>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">
-                            Automated workflows, alerts
-                        </p>
+
+                    <div class="impact-metrics" aria-label="Impact metrics">
+                        <strong>65% faster</strong>
+                        Crisis response: 48h → 8h
                     </div>
-                    <div class="arrow">→</div>
-                    <div class="system-box">
-                        <strong>Outcomes</strong>
-                        <p style="margin-top: 10px; font-size: 0.9rem;">
-                            Equity tracking, impact metrics
-                        </p>
+
+                    <a href="predictive-model/demo.html" class="btn" aria-label="View interactive demo of Student Risk Prediction Model">🎮 Interactive Demo</a>
+                    <a href="predictive-model/student_risk_predictor.py" class="btn btn-secondary" download aria-label="Download Python source code">📥 Download Source (.py)</a>
+                </article>
+
+                <!-- Project 2: MTSS Dashboard -->
+                <article class="project-card" data-category="ml-analytics platforms" aria-labelledby="project-2-title">
+                    <div class="project-icon" role="img" aria-label="Real-time dashboard and data visualization">📊</div>
+                    <h3 id="project-2-title">MTSS Real-Time Dashboard</h3>
+                    <p>I built an interactive dashboard tracking 150+ students across Tier 2/3 interventions with same-day adjustment capability.</p>
+
+                    <div class="tech-stack" role="list" aria-label="Technologies used">
+                        <span class="tech-badge" role="listitem">Python</span>
+                        <span class="tech-badge" role="listitem">Plotly</span>
+                        <span class="tech-badge" role="listitem">pandas</span>
+                    </div>
+
+                    <div class="impact-metrics" aria-label="Impact metrics">
+                        <strong>12 hours saved</strong>
+                        Weekly data entry eliminated
+                    </div>
+
+                    <a href="mtss-dashboard/demo.html" class="btn" aria-label="View interactive demo of MTSS Dashboard">🎮 Interactive Demo</a>
+                    <a href="mtss-dashboard/mtss_dashboard.py" class="btn btn-secondary" download aria-label="Download Python source code">📥 Download Source (.py)</a>
+                </article>
+
+                <!-- Project 3: ETL Pipeline -->
+                <article class="project-card" data-category="automation ml-analytics" aria-labelledby="project-3-title">
+                    <div class="project-icon" role="img" aria-label="Data integration and ETL pipeline">🔄</div>
+                    <h3 id="project-3-title">Nonprofit Data Integration</h3>
+                    <p>I built an ETL pipeline integrating 45 organizations across 5 disparate systems, serving 15,000+ children.</p>
+
+                    <div class="tech-stack" role="list" aria-label="Technologies used">
+                        <span class="tech-badge" role="listitem">Python</span>
+                        <span class="tech-badge" role="listitem">SQLAlchemy</span>
+                        <span class="tech-badge" role="listitem">PostgreSQL</span>
+                    </div>
+
+                    <div class="impact-metrics" aria-label="Impact metrics">
+                        <strong>85% reduction</strong>
+                        Report time: 40h → 6h<br>
+                        <strong>2,400+ inconsistencies identified</strong>
+                        Automated data quality checks
+                    </div>
+
+                    <a href="etl-pipeline/demo.html" class="btn" aria-label="View interactive demo of ETL Pipeline">🎮 Interactive Demo</a>
+                    <a href="etl-pipeline/nonprofit_data_pipeline.py" class="btn btn-secondary" download aria-label="Download Python source code">📥 Download Source (.py)</a>
+                </article>
+
+                <!-- Project 4: Equity Tracking -->
+                <article class="project-card" data-category="ml-analytics" aria-labelledby="project-4-title">
+                    <div class="project-icon" role="img" aria-label="Equity tracking and monitoring system">⚖️</div>
+                    <h3 id="project-4-title">Equity-Focused Tracking</h3>
+                    <p>I designed a comprehensive system monitoring 8 educational metrics for 60+ foster care students across 12 districts.</p>
+
+                    <div class="tech-stack" role="list" aria-label="Technologies used">
+                        <span class="tech-badge" role="listitem">Python</span>
+                        <span class="tech-badge" role="listitem">Excel</span>
+                        <span class="tech-badge" role="listitem">pandas</span>
+                    </div>
+
+                    <div class="impact-metrics" aria-label="Impact metrics">
+                        <strong>+30% success</strong>
+                        School transitions: 52% → 82%<br>
+                        <strong>87% time reduction</strong>
+                        Reporting: 3 days → 4 hours
+                    </div>
+
+                    <a href="equity-tracking/demo.html" class="btn" aria-label="View interactive demo of Equity Tracking">🎮 Interactive Demo</a>
+                    <a href="equity-tracking/equity_tracking_system.py" class="btn btn-secondary" download aria-label="Download Python source code">📥 Download Source (.py)</a>
+                </article>
+
+                <!-- Project 5: Progress Monitoring -->
+                <article class="project-card" data-category="automation" aria-labelledby="project-5-title">
+                    <div class="project-icon" role="img" aria-label="Progress monitoring and reporting">📈</div>
+                    <h3 id="project-5-title">Automated Progress Monitoring</h3>
+                    <p>I created a SQL-based system generating weekly intervention reports for 60+ Tier 2/3 students automatically.</p>
+
+                    <div class="tech-stack" role="list" aria-label="Technologies used">
+                        <span class="tech-badge" role="listitem">SQL</span>
+                        <span class="tech-badge" role="listitem">Python</span>
+                        <span class="tech-badge" role="listitem">PowerSchool</span>
+                    </div>
+
+                    <div class="impact-metrics" aria-label="Impact metrics">
+                        <strong>12,000+ assessments</strong>
+                        Processed weekly<br>
+                        <strong>8 hours saved</strong>
+                        100% automation achieved
+                    </div>
+
+                    <a href="progress-monitoring/demo.html" class="btn" aria-label="View interactive demo of Progress Monitoring">🎮 Interactive Demo</a>
+                    <a href="progress-monitoring/progress_monitoring_system.py" class="btn btn-secondary" download aria-label="Download Python source code">📥 Download Source (.py)</a>
+                </article>
+
+                <!-- Project 6: Assessment Platform -->
+                <article class="project-card" data-category="platforms automation" aria-labelledby="project-6-title">
+                    <div class="project-icon" role="img" aria-label="Assessment and data platform">📋</div>
+                    <h3 id="project-6-title">Multi-Source Assessment Platform</h3>
+                    <p>I built a platform that processes 1,000+ weekly data points from 5 sources to generate 120+ individualized reports.</p>
+
+                    <div class="tech-stack" role="list" aria-label="Technologies used">
+                        <span class="tech-badge" role="listitem">Python</span>
+                        <span class="tech-badge" role="listitem">pandas</span>
+                        <span class="tech-badge" role="listitem">Multi-source</span>
+                    </div>
+
+                    <div class="impact-metrics" aria-label="Impact metrics">
+                        <strong>+47% effectiveness</strong>
+                        52% behavioral ↓, 38% academic ↑, 41% SEL ↑
+                    </div>
+
+                    <a href="assessment-platform/demo.html" class="btn" aria-label="View interactive demo of Assessment Platform">🎮 Interactive Demo</a>
+                    <a href="assessment-platform/assessment_platform.py" class="btn btn-secondary" download aria-label="Download Python source code">📥 Download Source (.py)</a>
+                </article>
+
+                <!-- Project 7: Workflow Automation -->
+                <article class="project-card" data-category="automation" aria-labelledby="project-7-title">
+                    <div class="project-icon" role="img" aria-label="Workflow automation and efficiency">⚡</div>
+                    <h3 id="project-7-title">Mentor Workflow Automation</h3>
+                    <p>I developed a Google Apps Script automation for check-ins, scheduling, and reporting across 50+ mentors.</p>
+
+                    <div class="tech-stack" role="list" aria-label="Technologies used">
+                        <span class="tech-badge" role="listitem">Apps Script</span>
+                        <span class="tech-badge" role="listitem">Google Workspace</span>
+                    </div>
+
+                    <div class="impact-metrics" aria-label="Impact metrics">
+                        <strong>+28% efficiency</strong>
+                        Staff time: 8h → 5.75h<br>
+                        <strong>30% training reduction</strong>
+                        20h → 14h • 95%+ compliance
+                    </div>
+
+                    <a href="workflow-automation/demo.html" class="btn" aria-label="View interactive demo of Workflow Automation">🎮 Interactive Demo</a>
+                    <a href="workflow-automation/mentor_workflow_automation.gs" class="btn btn-secondary" download aria-label="Download Google Apps Script source code">📥 Download Source (.gs)</a>
+                </article>
+
+                <!-- Project 8: Restorative Justice -->
+                <article class="project-card" data-category="platforms" aria-labelledby="project-8-title">
+                    <div class="project-icon" role="img" aria-label="Restorative justice platform">🔄</div>
+                    <h3 id="project-8-title">Restorative Justice Platform</h3>
+                    <p>I created a web platform for 30+ facilitators managing 120+ annual restorative circle sessions.</p>
+
+                    <div class="tech-stack" role="list" aria-label="Technologies used">
+                        <span class="tech-badge" role="listitem">JavaScript</span>
+                        <span class="tech-badge" role="listitem">HTML/CSS</span>
+                    </div>
+
+                    <div class="impact-metrics" aria-label="Impact metrics">
+                        <strong>120+ sessions</strong>
+                        Standardized protocols
+                    </div>
+
+                    <a href="restorative-justice-platform/index.html" class="btn" aria-label="View live Restorative Justice Platform">🎮 Live Platform</a>
+                    <a href="restorative-justice-platform/app.js" class="btn btn-secondary" download aria-label="Download JavaScript source code">📥 Download Source (.js)</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Integration Diagram -->
+        <section id="integration" class="integration-section">
+            <div class="container">
+                <h2 class="section-heading">How It All Connects</h2>
+                <p class="section-subtitle">
+                    These aren't isolated projects – they're an interconnected ecosystem for data-driven student support.
+                </p>
+
+                <div class="integration-diagram">
+                    <div class="system-flow">
+                        <div class="system-box">
+                            <strong>Data Collection</strong>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">
+                                PowerSchool, Google Forms, Staff Observations
+                            </p>
+                        </div>
+                        <div class="arrow" aria-hidden="true">→</div>
+                        <div class="system-box">
+                            <strong>ETL Pipeline</strong>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">
+                                Validate, Transform, Centralize (45 orgs)
+                            </p>
+                        </div>
+                        <div class="arrow" aria-hidden="true">→</div>
+                        <div class="system-box">
+                            <strong>ML & Analytics</strong>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">
+                                Predictive Model, Risk Scoring, Dashboards
+                            </p>
+                        </div>
+                        <div class="arrow" aria-hidden="true">→</div>
+                        <div class="system-box">
+                            <strong>Action & Support</strong>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">
+                                Automated Reports, Interventions, Tracking
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Architecture documentation available in repository -->
-        </div>
-    </section>
+        <!-- Stakeholder Views -->
+        <section id="stakeholders" class="container">
+            <h2 class="section-heading">Choose Your View</h2>
 
-    <!-- Stakeholder Views -->
-    <section id="stakeholders" class="container">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: var(--dark);">
-            Choose Your View
-        </h2>
-
-        <div class="stakeholder-tabs">
-            <button class="tab-btn active" onclick="showTab('recruiter')">Recruiter (30 sec)</button>
-            <button class="tab-btn" onclick="showTab('hiring')">Hiring Manager</button>
-            <button class="tab-btn" onclick="showTab('technical')">Technical Lead</button>
-            <button class="tab-btn" onclick="showTab('education')">Education Leader</button>
-        </div>
-
-        <div id="recruiter" class="tab-content active">
-            <h3>Quick Overview for Recruiters</h3>
-            <ul style="font-size: 1.1rem; line-height: 2;">
-                <li>✅ <strong>9 years experience</strong> in education + 4 years technical development</li>
-                <li>✅ <strong>Python ML expert</strong>: 95%+ accuracy models in production</li>
-                <li>✅ <strong>Proven impact</strong>: 65% faster crisis response, 30% better outcomes</li>
-                <li>✅ <strong>Full-stack capabilities</strong>: Python, SQL, JavaScript, Cloud platforms</li>
-                <li>✅ <strong>Scale demonstrated</strong>: Systems serving 500-15,000 users</li>
-                <li>✅ <strong>Certifications</strong>: Google Data Analytics, CAPM, Harvard Leadership</li>
-            </ul>
-            <div style="margin-top: 30px;">
-                <a href="https://github.com/LouisRosche/Resume-Artifacts#readme" class="btn" target="_blank">📖 View on GitHub</a>
-                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            <div class="stakeholder-tabs" role="tablist" aria-label="Stakeholder perspectives">
+                <button class="tab-btn active"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="recruiter"
+                        id="recruiter-tab"
+                        tabindex="0"
+                        onclick="showTab('recruiter')">
+                    Recruiter (30 sec)
+                </button>
+                <button class="tab-btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="hiring"
+                        id="hiring-tab"
+                        tabindex="-1"
+                        onclick="showTab('hiring')">
+                    Hiring Manager
+                </button>
+                <button class="tab-btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="technical"
+                        id="technical-tab"
+                        tabindex="-1"
+                        onclick="showTab('technical')">
+                    Technical Leader
+                </button>
+                <button class="tab-btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="education"
+                        id="education-tab"
+                        tabindex="-1"
+                        onclick="showTab('education')">
+                    Education Leader
+                </button>
             </div>
-        </div>
 
-        <div id="hiring" class="tab-content">
-            <h3>For Hiring Managers: Can They Deliver?</h3>
-            <h4 style="margin-top: 30px;">Proven Track Record</h4>
-            <ul style="font-size: 1.05rem; line-height: 1.8;">
-                <li><strong>Predictive Model</strong>: Reduced crisis response time 65% (48h → 8h)</li>
-                <li><strong>ETL Pipeline</strong>: Integrated 45 organizations, 85% time reduction</li>
-                <li><strong>Equity System</strong>: Increased transition success 30% (52% → 82%)</li>
-                <li><strong>Dashboard Systems</strong>: Saves 12+ hours weekly in manual work</li>
-            </ul>
-
-            <h4 style="margin-top: 30px;">Technical + Domain Expertise</h4>
-            <p style="font-size: 1.05rem;">
-                Unlike pure engineers, I understand the domain deeply (9 years in education).
-                Unlike pure educators, I build production-quality systems (4 years technical).
-                This combination means I build what actually solves the problem.
-            </p>
-
-            <div style="margin-top: 30px;">
-                <a href="https://github.com/LouisRosche/Resume-Artifacts/tree/main/docs" class="btn" target="_blank">📁 View Documentation</a>
-                <a href="#projects" class="btn btn-secondary">View Demos</a>
-            </div>
-        </div>
-
-        <div id="technical" class="tab-content">
-            <h3>For Technical Leaders: Code Quality & Architecture</h3>
-
-            <h4 style="margin-top: 30px;">Tech Stack</h4>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
-                <div style="background: var(--light); padding: 20px; border-radius: 10px;">
-                    <strong>Languages</strong>
-                    <p>Python, JavaScript, TypeScript, SQL, R</p>
-                </div>
-                <div style="background: var(--light); padding: 20px; border-radius: 10px;">
-                    <strong>ML/Data</strong>
-                    <p>scikit-learn, XGBoost, pandas, NumPy, Plotly</p>
-                </div>
-                <div style="background: var(--light); padding: 20px; border-radius: 10px;">
-                    <strong>Databases</strong>
-                    <p>PostgreSQL, MySQL, SQLite, SQLAlchemy</p>
-                </div>
-                <div style="background: var(--light); padding: 20px; border-radius: 10px;">
-                    <strong>Cloud/DevOps</strong>
-                    <p>Azure, GCP, Git/GitHub, Docker</p>
+            <div id="recruiter" class="tab-content active" role="tabpanel" aria-labelledby="recruiter-tab" aria-hidden="false">
+                <h3>Quick Overview for Recruiters</h3>
+                <h4 style="margin-top: 20px;">The Basics</h4>
+                <ul style="font-size: 1.05rem; line-height: 1.8;">
+                    <li>✅ <strong>9+ years education</strong>: Classroom teacher → MTSS Coordinator → Director → Data Specialist</li>
+                    <li>✅ <strong>4 years technical</strong>: Building production ML models, dashboards, ETL pipelines</li>
+                    <li>✅ <strong>Proven impact</strong>: 95%+ ML accuracy, 65% faster crisis response, 500+ students served</li>
+                    <li>✅ <strong>Full-stack capabilities</strong>: Python, SQL, JavaScript, Cloud platforms</li>
+                    <li>✅ <strong>Scale demonstrated</strong>: Systems serving 500-15,000 users</li>
+                    <li>✅ <strong>Certifications</strong>: Google Data Analytics, CAPM, Harvard Leadership</li>
+                </ul>
+                <div class="mt-30">
+                    <a href="https://github.com/LouisRosche/Resume-Artifacts#readme" class="btn" target="_blank" rel="noopener noreferrer">📖 View on GitHub</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
                 </div>
             </div>
 
-            <h4 style="margin-top: 30px;">Architecture Highlights</h4>
-            <ul style="font-size: 1.05rem; line-height: 1.8;">
-                <li>ETL pipelines processing 1,000+ data points/week with validation</li>
-                <li>ML models with 95%+ accuracy, cross-validation, feature engineering</li>
-                <li>Real-time dashboards with responsive design</li>
-                <li>Modular, maintainable code with documentation</li>
-                <li>Error handling, logging, data quality checks throughout</li>
-            </ul>
+            <div id="hiring" class="tab-content" role="tabpanel" aria-labelledby="hiring-tab" aria-hidden="true">
+                <h3>For Hiring Managers: Can I Deliver?</h3>
+                <h4 style="margin-top: 20px;">Proven Track Record</h4>
+                <ul style="font-size: 1.05rem; line-height: 1.8;">
+                    <li><strong>ML Model</strong>: 95%+ accuracy, deployed in production, serving 500+ students</li>
+                    <li><strong>ETL Pipeline</strong>: Integrated 45 organizations, 85% time reduction</li>
+                    <li><strong>Real Impact</strong>: 65% faster crisis response, 30% better student transitions</li>
+                    <li><strong>Scale</strong>: Systems serving 15,000+ children across multiple organizations</li>
+                </ul>
 
-            <div style="margin-top: 30px;">
-                <a href="https://github.com/LouisRosche/Resume-Artifacts" class="btn" target="_blank">View on GitHub</a>
-                <a href="#projects" class="btn btn-secondary">View Live Demos</a>
+                <h4 style="margin-top: 30px;">What Makes Me Different</h4>
+                <p style="margin: 15px 0; font-size: 1.05rem; line-height: 1.7;">
+                    <strong>I combine deep domain expertise with technical skills.</strong>
+                    Unlike pure technologists, I understand the problem intimately (9 years in classrooms).
+                    Unlike pure educators, I build production-quality systems (4 years technical).
+                    This combination means I build what actually solves the problem.
+                </p>
+
+                <div class="mt-30">
+                    <a href="https://github.com/LouisRosche/Resume-Artifacts/tree/main/docs" class="btn" target="_blank" rel="noopener noreferrer">📁 View Documentation</a>
+                    <a href="#projects" class="btn btn-secondary">View Demos</a>
+                </div>
             </div>
-        </div>
 
-        <div id="education" class="tab-content">
-            <h3>For Education Leaders: Student-Centered Impact</h3>
+            <div id="technical" class="tab-content" role="tabpanel" aria-labelledby="technical-tab" aria-hidden="true">
+                <h3>For Technical Leaders: Code Quality & Architecture</h3>
 
-            <h4 style="margin-top: 30px;">Educational Outcomes</h4>
-            <ul style="font-size: 1.05rem; line-height: 1.8;">
-                <li><strong>52% reduction</strong> in behavioral incidents</li>
-                <li><strong>38% increase</strong> in academic engagement</li>
-                <li><strong>41% growth</strong> in SEL competency</li>
-                <li><strong>30% improvement</strong> in school transitions (foster care)</li>
-                <li><strong>47% overall</strong> program effectiveness improvement</li>
-            </ul>
+                <h4 style="margin-top: 20px;">Tech Stack</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div style="background: var(--light); padding: 20px; border-radius: 10px;">
+                        <strong>Languages</strong>
+                        <p>Python, JavaScript, TypeScript, SQL, R</p>
+                    </div>
+                    <div style="background: var(--light); padding: 20px; border-radius: 10px;">
+                        <strong>ML/Data</strong>
+                        <p>XGBoost, scikit-learn, pandas, NumPy</p>
+                    </div>
+                    <div style="background: var(--light); padding: 20px; border-radius: 10px;">
+                        <strong>Databases</strong>
+                        <p>PostgreSQL, MySQL, SQLite</p>
+                    </div>
+                    <div style="background: var(--light); padding: 20px; border-radius: 10px;">
+                        <strong>Cloud</strong>
+                        <p>Azure, GCP, GitHub Actions</p>
+                    </div>
+                </div>
 
-            <h4 style="margin-top: 30px;">Equity Focus</h4>
-            <p style="font-size: 1.05rem;">
-                Every system prioritizes equity: tracking gaps, monitoring vulnerable populations
-                (foster care, IEP students, low SES), and ensuring resources reach those who need them most.
-            </p>
+                <h4 style="margin-top: 30px;">Code Quality</h4>
+                <ul style="font-size: 1.05rem; line-height: 1.8;">
+                    <li>All projects on GitHub with full source code available</li>
+                    <li>Modular, maintainable code with documentation</li>
+                    <li>Error handling, logging, data quality checks throughout</li>
+                </ul>
 
-            <h4 style="margin-top: 30px;">Educator Background</h4>
-            <ul style="font-size: 1.05rem; line-height: 1.8;">
-                <li>MA in Education (Cum Laude) + BS Health Science</li>
-                <li>Missouri Teaching License (Elementary 1-6, Science 5-9)</li>
-                <li>9 years classroom teaching across grades K-8</li>
-                <li>MTSS Coordinator, Science Department Lead</li>
-            </ul>
-
-            <div style="margin-top: 30px;">
-                <a href="#projects" class="btn">View Interactive Demos</a>
+                <div class="mt-30">
+                    <a href="https://github.com/LouisRosche/Resume-Artifacts" class="btn" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                    <a href="#projects" class="btn btn-secondary">View Live Demos</a>
+                </div>
             </div>
-        </div>
-    </section>
+
+            <div id="education" class="tab-content" role="tabpanel" aria-labelledby="education-tab" aria-hidden="true">
+                <h3>For Education Leaders: Student-Centered Impact</h3>
+                <h4 style="margin-top: 20px;">Real Student Outcomes</h4>
+                <ul style="font-size: 1.05rem; line-height: 1.8;">
+                    <li><strong>Crisis Prevention</strong>: 2-3 weeks early warning, 65% faster response</li>
+                    <li><strong>Equity Improvement</strong>: 30% increase in successful foster care transitions (52% → 82%)</li>
+                    <li><strong>Intervention Effectiveness</strong>: 47% program improvement through data-driven adjustments</li>
+                    <li><strong>Staff Efficiency</strong>: 8-12 hours weekly saved per system, allowing more student face time</li>
+                </ul>
+
+                <h4 style="margin-top: 30px;">Educational Background</h4>
+                <ul style="font-size: 1.05rem; line-height: 1.8;">
+                    <li>M.A. in Education, Cum Laude - Truman State University</li>
+                    <li>Missouri Teaching License (Elementary 1-6, Science 5-9)</li>
+                    <li>9 years classroom teaching across grades K-8</li>
+                    <li>MTSS Coordinator, Science Department Lead</li>
+                </ul>
+
+                <div class="mt-30">
+                    <a href="#projects" class="btn">View Interactive Demos</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- CTA Section -->
     <section id="contact" class="cta-section">
-        <div class="container">
-            <h2>Let's Build Better Systems for Students</h2>
-            <p style="font-size: 1.2rem; margin: 20px 0;">
-                Looking for someone who combines technical depth with educational expertise?
-            </p>
+        <h2>Let's Build Something Impactful</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">
+            Ready to discuss how data-driven systems can transform educational outcomes?
+        </p>
 
-            <div class="contact-info">
-                <div class="contact-item">
-                    📧 louis.rosche@gmail.com
-                </div>
-                <div class="contact-item">
-                    📱 573-259-6165
-                </div>
-                <div class="contact-item">
-                    💼 <a href="https://linkedin.com/in/louis-rosche" style="color: white;">LinkedIn</a>
-                </div>
-                <div class="contact-item">
-                    💻 <a href="https://github.com/LouisRosche/Resume-Artifacts" style="color: white;">GitHub</a>
-                </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                📧 <a href="mailto:louis.rosche@gmail.com">louis.rosche@gmail.com</a>
             </div>
+            <div class="contact-item">
+                📱 <a href="tel:+15732596165">573-259-6165</a>
+            </div>
+            <div class="contact-item">
+                💼 <a href="https://linkedin.com/in/louis-rosche" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div class="contact-item">
+                💻 <a href="https://github.com/LouisRosche/Resume-Artifacts" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </div>
 
-            <div style="margin-top: 40px;">
-                <a href="https://github.com/LouisRosche/Resume-Artifacts/blob/main/QUICK_START.md" class="btn" style="background: white; color: var(--primary);" target="_blank">
-                    📖 Quick Start Guide (GitHub)
-                </a>
-            </div>
+        <div class="mt-30">
+            <a href="https://github.com/LouisRosche/Resume-Artifacts/blob/main/QUICK_START.md" class="btn" style="background: white; color: var(--primary);" target="_blank" rel="noopener noreferrer">
+                📖 Quick Start Guide (GitHub)
+            </a>
         </div>
     </section>
 
-    <script>
-        function showTab(tabName) {
-            // Hide all tab contents
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // Remove active class from all buttons
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
