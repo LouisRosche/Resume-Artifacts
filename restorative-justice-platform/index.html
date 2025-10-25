@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restorative Justice Circle Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Restorative Justice Circle Platform</h1>
+            <p class="subtitle">Facilitating Meaningful Dialogue and Community Building</p>
+        </header>
+
+        <nav class="main-nav">
+            <button class="nav-btn active" data-section="circles">Active Circles</button>
+            <button class="nav-btn" data-section="protocols">Circle Protocols</button>
+            <button class="nav-btn" data-section="metrics">Participation Metrics</button>
+            <button class="nav-btn" data-section="resources">Resources</button>
+        </nav>
+
+        <main id="content">
+            <!-- Active Circles Section -->
+            <section id="circles" class="content-section active">
+                <div class="action-bar">
+                    <button class="btn-primary" onclick="createNewCircle()">+ New Circle</button>
+                    <input type="search" placeholder="Search circles..." id="circle-search">
+                </div>
+
+                <div class="circles-grid" id="circles-grid">
+                    <!-- Circles will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Circle Protocols Section -->
+            <section id="protocols" class="content-section">
+                <h2>Circle Discussion Protocols</h2>
+                <div class="protocols-list" id="protocols-list">
+                    <!-- Protocols will be loaded from markdown files -->
+                </div>
+            </section>
+
+            <!-- Participation Metrics Section -->
+            <section id="metrics" class="content-section">
+                <h2>Participation Tracking</h2>
+                <div class="metrics-dashboard">
+                    <div class="metric-card">
+                        <h3>Total Sessions</h3>
+                        <p class="metric-value" id="total-sessions">120+</p>
+                        <p class="metric-subtitle">Annually</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Active Participants</h3>
+                        <p class="metric-value" id="active-participants">30+</p>
+                        <p class="metric-subtitle">Staff Members</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Avg. Attendance</h3>
+                        <p class="metric-value" id="avg-attendance">--</p>
+                        <p class="metric-subtitle">Per Session</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Resolution Rate</h3>
+                        <p class="metric-value" id="resolution-rate">--</p>
+                        <p class="metric-subtitle">Success Rate</p>
+                    </div>
+                </div>
+                <div id="metrics-chart"></div>
+            </section>
+
+            <!-- Resources Section -->
+            <section id="resources" class="content-section">
+                <h2>Circle Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h3>Getting Started</h3>
+                        <ul>
+                            <li><a href="protocols/introduction.md">Introduction to Restorative Circles</a></li>
+                            <li><a href="protocols/facilitator-guide.md">Facilitator Guide</a></li>
+                            <li><a href="protocols/participant-guidelines.md">Participant Guidelines</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>Circle Types</h3>
+                        <ul>
+                            <li><a href="protocols/community-building.md">Community Building Circles</a></li>
+                            <li><a href="protocols/conflict-resolution.md">Conflict Resolution Circles</a></li>
+                            <li><a href="protocols/harm-repair.md">Harm and Repair Circles</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
