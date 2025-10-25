@@ -232,7 +232,7 @@ function initScrollSpy() {
     let scrollTimeout;
 
     function updateActiveSection() {
-        const scrollPosition = window.scrollY + 100; // Offset for better UX
+        const scrollPosition = window.scrollY + 100;
 
         // Update reading progress
         const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -241,16 +241,24 @@ function initScrollSpy() {
             progressBar.style.width = `${Math.min(scrollPercent, 100)}%`;
         }
 
-        // Find current section
+        // Find current section - check if at bottom first
         let currentSection = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
+        const atBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 10;
 
-            if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionTop + sectionHeight - 200) {
-                currentSection = section.getAttribute('id');
-            }
-        });
+        if (atBottom && sections.length > 0) {
+            // If at bottom of page, activate last section
+            currentSection = sections[sections.length - 1].getAttribute('id');
+        } else {
+            // Otherwise find section based on scroll position
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollPosition >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+        }
 
         // Update active link
         sidebarLinks.forEach(link => {

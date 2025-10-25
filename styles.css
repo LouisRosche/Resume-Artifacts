@@ -1,6 +1,8 @@
 /*
  * Louis Rosche - Portfolio Styles
- * Accessible, responsive, and following WCAG 2.1 AA standards
+ * Accessible, responsive, and following WCAG 2.2 AA standards
+ * Modern CSS features: text-wrap, content-visibility, :has() selector
+ * Performance optimized for Core Web Vitals (INP, LCP, CLS)
  */
 
 :root {
@@ -23,6 +25,18 @@ body {
     line-height: 1.6;
     color: var(--text);
     background: var(--light);
+}
+
+/* Modern CSS: Balanced text wrapping for headings */
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+/* Performance: Defer rendering of off-screen content */
+.project-card,
+.tab-content,
+section {
+    content-visibility: auto;
 }
 
 /* Skip to main content link - Accessibility critical */
@@ -185,7 +199,7 @@ body {
     }
 }
 
-/* Focus indicators - WCAG 2.1 AA compliance */
+/* Focus indicators - WCAG 2.2 AA compliance including Focus Not Obscured (2.4.11) */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -193,6 +207,8 @@ select:focus-visible {
     outline: 3px solid var(--primary);
     outline-offset: 2px;
     border-radius: 4px;
+    position: relative;
+    z-index: 1;
 }
 
 nav a:focus-visible {
@@ -203,6 +219,21 @@ nav a:focus-visible {
 
 .tab-btn:focus-visible {
     box-shadow: inset 0 0 0 2px white, 0 0 0 3px var(--primary);
+}
+
+/* WCAG 2.2: Ensure focused elements scroll into view if needed */
+:focus-visible {
+    scroll-margin-block: 5rem;
+}
+
+/* Modern CSS: Use :has() for parent-based styling */
+.sidebar-nav:has(.sidebar-link:focus-visible) {
+    scroll-behavior: smooth;
+}
+
+.projects-grid:has(.project-card:focus-within) .project-card:not(:focus-within) {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
 /* Hero Section */
