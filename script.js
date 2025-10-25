@@ -217,6 +217,99 @@ if ('IntersectionObserver' in window) {
     });
 }
 
+/**
+ * Scroll-spy functionality for sidebar navigation
+ * Highlights active section as user scrolls
+ */
+function initScrollSpy() {
+    const sections = document.querySelectorAll('section[id]');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    const progressBar = document.getElementById('reading-progress');
+
+    if (sections.length === 0 || sidebarLinks.length === 0) return;
+
+    // Debounce scroll events for performance
+    let scrollTimeout;
+
+    function updateActiveSection() {
+        const scrollPosition = window.scrollY + 100; // Offset for better UX
+
+        // Update reading progress
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (window.scrollY / documentHeight) * 100;
+        if (progressBar) {
+            progressBar.style.width = `${Math.min(scrollPercent, 100)}%`;
+        }
+
+        // Find current section
+        let currentSection = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionTop + sectionHeight - 200) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        // Update active link
+        sidebarLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkSection = link.getAttribute('data-section');
+
+            if (linkSection === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Handle scroll with debouncing
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(updateActiveSection);
+    }, { passive: true });
+
+    // Initial call
+    updateActiveSection();
+}
+
+/**
+ * Initialize sidebar smooth scrolling
+ * Enhanced smooth scroll for sidebar links with offset
+ */
+function initSidebarScrolling() {
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 20; // Small offset from top
+
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+
+                // Update active state immediately for better UX
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
+}
+
+// Initialize scroll-spy and sidebar scrolling on load
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollSpy();
+    initSidebarScrolling();
+});
+
 // Export functions for use in inline handlers (temporary until full migration)
 window.showTab = showTab;
 window.filterProjects = filterProjects;
