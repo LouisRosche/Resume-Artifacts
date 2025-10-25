@@ -1,0 +1,133 @@
+/*
+ * Demo Page Enhancements
+ * Wide-screen optimizations and theme support for all demo pages
+ * Linked from all demo.html files for consistent UX
+ */
+
+/* Wide-screen optimization (1600px+) */
+@media (min-width: 1600px) {
+    /* Adjust two-column layouts to favor visualization space */
+    .two-column {
+        grid-template-columns: 2fr 3fr !important;
+        gap: 40px !important;
+    }
+
+    /* Input panels can be narrower on wide screens */
+    .input-panel {
+        max-width: 600px;
+    }
+
+    /* Charts and outputs can expand */
+    .output-panel,
+    .prediction-panel {
+        min-width: 700px;
+    }
+}
+
+/* Ultra-wide screens (1920px+) */
+@media (min-width: 1920px) {
+    .two-column {
+        grid-template-columns: 1fr 2fr !important;
+        gap: 50px !important;
+    }
+
+    /* Prevent content from becoming too wide */
+    body {
+        max-width: 2400px;
+    }
+
+    /* Charts can be larger */
+    canvas {
+        max-height: 600px !important;
+    }
+}
+
+/* Theme support for demo pages */
+.header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    transition: background 0.3s ease;
+}
+
+.input-panel,
+.output-panel,
+.prediction-panel,
+.card {
+    background: var(--bg) !important;
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.slider-label,
+.metric-label,
+label {
+    color: var(--text) !important;
+}
+
+.slider-value {
+    color: var(--primary) !important;
+}
+
+/* Input elements theme support */
+input[type="range"] {
+    accent-color: var(--primary);
+}
+
+select,
+input[type="text"],
+input[type="search"] {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* Grid layouts for controls sections */
+@media (min-width: 1400px) {
+    .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .control-group {
+        min-width: 0; /* Prevent grid blowout */
+    }
+}
+
+/* Horizontal space utilization for metric cards */
+@media (min-width: 1600px) {
+    .metrics-dashboard,
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Improve chart responsiveness */
+canvas {
+    max-width: 100%;
+    height: auto !important;
+}
+
+/* Button theming */
+button,
+.btn,
+.btn-primary {
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Ensure proper contrast in dark mode */
+[data-theme="dark"] .header h1,
+[data-theme="dark"] .header p,
+[data-theme="colorblind-dark"] .header h1,
+[data-theme="colorblind-dark"] .header p {
+    color: white;
+}
+
+/* Mobile: Keep single column */
+@media (max-width: 768px) {
+    .two-column {
+        grid-template-columns: 1fr !important;
+    }
+}
