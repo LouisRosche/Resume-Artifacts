@@ -1,0 +1,46 @@
+# Resume Artifacts - Python Dependencies
+# Louis Rosche Professional Portfolio
+# Python 3.8+
+
+# Core Data Processing
+pandas>=1.5.0
+numpy>=1.23.0
+
+# Data Visualization
+plotly>=5.10.0
+matplotlib>=3.5.0
+
+# Machine Learning
+scikit-learn>=1.1.0
+xgboost>=1.7.0
+
+# Database
+sqlalchemy>=1.4.0
+
+# Excel Integration
+openpyxl>=3.0.0
+xlrd>=2.0.0
+xlsxwriter>=3.0.0
+
+# Web Framework (optional for dashboard hosting)
+flask>=2.2.0
+
+# Data Validation
+jsonschema>=4.0.0
+
+# Utilities
+python-dateutil>=2.8.0
+pytz>=2022.1
+
+# Testing (optional)
+pytest>=7.2.0
+pytest-cov>=4.0.0
+
+# Development Tools (optional)
+jupyter>=1.0.0
+ipython>=8.0.0
+
+# API Integration (for production use)
+requests>=2.28.0
+google-auth>=2.16.0
+google-api-python-client>=2.70.0
