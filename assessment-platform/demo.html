@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Source Assessment Platform - Louis Rosche</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #1a202c;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #4a5568;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f59e0b;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #718096;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-change {
+            color: #10b981;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .data-sources {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .data-sources h2 {
+            color: #1a202c;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .source-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .source-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .source-name {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 5px;
+        }
+
+        .source-desc {
+            color: #78350f;
+            font-size: 0.85rem;
+        }
+
+        .sample-report {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .report-header {
+            border-bottom: 3px solid #f59e0b;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .report-header h2 {
+            color: #1a202c;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .report-meta {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        .student-profile {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-info {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .info-value {
+            color: #1a202c;
+        }
+
+        .composite-score {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .composite-score h3 {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .score-value {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .score-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .section-header {
+            color: #1a202c;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-card {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .chart-card h4 {
+            color: #1a202c;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 250px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .data-table th {
+            background: #f7fafc;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #4a5568;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1a202c;
+        }
+
+        .data-table tr:hover {
+            background: #f7fafc;
+        }
+
+        .recommendations {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .recommendations h4 {
+            color: #065f46;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendations li {
+            padding: 8px 0;
+            color: #064e3b;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .recommendations li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .action-items {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .action-items h4 {
+            color: #92400e;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .action-items ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-items li {
+            padding: 8px 0;
+            color: #78350f;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .action-items li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .student-profile {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Multi-Source Assessment Platform</h1>
+            <p>I designed this comprehensive assessment system to integrate data from 5 distinct sources for 120+ students, processing 1,000+ data points weekly. The platform automatically generates individualized reports that combine academic metrics, behavioral observations, and social-emotional learning indicators, resulting in a 47% improvement in program effectiveness.</p>
+        </div>
+
+        <div class="impact-metrics">
+            <div class="metric-card">
+                <div class="metric-value">120+</div>
+                <div class="metric-label">Students Assessed</div>
+                <div class="metric-change">Weekly comprehensive reports</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-value">1,000+</div>
+                <div class="metric-label">Weekly Data Points</div>
+                <div class="metric-change">5 integrated sources</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-value">47%</div>
+                <div class="metric-label">Effectiveness Improvement</div>
+                <div class="metric-change">Data-driven interventions</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-value">50,000+</div>
+                <div class="metric-label">Monthly Responses</div>
+                <div class="metric-change">60% workload reduction</div>
+            </div>
+        </div>
+
+        <div class="data-sources">
+            <h2>🔗 Five Integrated Data Sources</h2>
+            <p style="color: #718096; margin-bottom: 20px;">I built custom connectors to automatically pull data from these five distinct sources, eliminating manual data entry and ensuring real-time accuracy.</p>
+
+            <div class="sources-grid">
+                <div class="source-card">
+                    <div class="source-icon">📚</div>
+                    <div class="source-name">PowerSchool</div>
+                    <div class="source-desc">Grades, attendance, discipline records</div>
+                </div>
+
+                <div class="source-card">
+                    <div class="source-icon">📝</div>
+                    <div class="source-name">Google Forms</div>
+                    <div class="source-desc">Student self-assessments, surveys</div>
+                </div>
+
+                <div class="source-card">
+                    <div class="source-icon">👁️</div>
+                    <div class="source-name">Staff Observations</div>
+                    <div class="source-desc">Classroom behavior, engagement notes</div>
+                </div>
+
+                <div class="source-card">
+                    <div class="source-icon">💬</div>
+                    <div class="source-name">Counselor Notes</div>
+                    <div class="source-desc">SEL check-ins, intervention logs</div>
+                </div>
+
+                <div class="source-card">
+                    <div class="source-icon">👨‍👩‍👧</div>
+                    <div class="source-name">Parent Communications</div>
+                    <div class="source-desc">Home feedback, concerns, progress</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: white; border-radius: 12px; padding: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h2 style="color: #1a202c; margin-bottom: 15px; font-size: 1.5rem;">📈 Program Effectiveness Breakdown</h2>
+            <p style="color: #718096; margin-bottom: 20px;">By implementing this multi-source assessment system, I achieved measurable improvements across three critical domains:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div style="background: #fee2e2; padding: 20px; border-radius: 10px; border-left: 4px solid #ef4444;">
+                    <div style="font-size: 2.5rem; font-weight: bold; color: #991b1b; margin-bottom: 5px;">-52%</div>
+                    <div style="color: #7f1d1d; font-weight: 600;">Behavioral Incidents</div>
+                    <div style="color: #991b1b; font-size: 0.85rem; margin-top: 5px;">Early intervention identification</div>
+                </div>
+
+                <div style="background: #d1fae5; padding: 20px; border-radius: 10px; border-left: 4px solid #10b981;">
+                    <div style="font-size: 2.5rem; font-weight: bold; color: #065f46; margin-bottom: 5px;">+38%</div>
+                    <div style="color: #064e3b; font-weight: 600;">Academic Engagement</div>
+                    <div style="color: #065f46; font-size: 0.85rem; margin-top: 5px;">Targeted academic supports</div>
+                </div>
+
+                <div style="background: #dbeafe; padding: 20px; border-radius: 10px; border-left: 4px solid #3b82f6;">
+                    <div style="font-size: 2.5rem; font-weight: bold; color: #1e40af; margin-bottom: 5px;">+41%</div>
+                    <div style="color: #1e3a8a; font-weight: 600;">SEL Growth</div>
+                    <div style="color: #1e40af; font-size: 0.85rem; margin-top: 5px;">Social-emotional learning gains</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sample-report">
+            <div class="report-header">
+                <h2>Sample Individualized Assessment Report</h2>
+                <p class="report-meta">Report Period: Week of January 15-19, 2024 | Generated: January 22, 2024 at 6:00 AM</p>
+            </div>
+
+            <div class="student-profile">
+                <div class="profile-info">
+                    <h3 style="color: #1a202c; margin-bottom: 15px;">Student Information</h3>
+                    <div class="info-row">
+                        <span class="info-label">Student Name:</span>
+                        <span class="info-value">Marcus T.</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Student ID:</span>
+                        <span class="info-value">STU-2847</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Grade Level:</span>
+                        <span class="info-value">9th Grade</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Intervention Tier:</span>
+                        <span class="info-value"><span class="status-badge status-warning">Tier 2</span></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Primary Counselor:</span>
+                        <span class="info-value">Ms. Rodriguez</span>
+                    </div>
+                </div>
+
+                <div class="composite-score">
+                    <h3>Composite Progress Score</h3>
+                    <div class="score-value">74</div>
+                    <div class="score-label">Showing Improvement</div>
+                </div>
+            </div>
+
+            <h3 class="section-header">📊 Multi-Source Data Summary</h3>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data Source</th>
+                        <th>Metric</th>
+                        <th>Current</th>
+                        <th>Previous Week</th>
+                        <th>Trend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PowerSchool</strong></td>
+                        <td>Attendance Rate</td>
+                        <td>88%</td>
+                        <td>82%</td>
+                        <td><span class="status-badge status-success">↑ Improving</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PowerSchool</strong></td>
+                        <td>Academic GPA</td>
+                        <td>2.8</td>
+                        <td>2.6</td>
+                        <td><span class="status-badge status-success">↑ Improving</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PowerSchool</strong></td>
+                        <td>Discipline Incidents</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td><span class="status-badge status-success">↓ Decreasing</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Forms</strong></td>
+                        <td>Self-Assessment Score</td>
+                        <td>72/100</td>
+                        <td>68/100</td>
+                        <td><span class="status-badge status-success">↑ Improving</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staff Observations</strong></td>
+                        <td>Classroom Engagement</td>
+                        <td>7/10</td>
+                        <td>6/10</td>
+                        <td><span class="status-badge status-success">↑ Improving</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Counselor Notes</strong></td>
+                        <td>SEL Check-in Score</td>
+                        <td>75/100</td>
+                        <td>70/100</td>
+                        <td><span class="status-badge status-success">↑ Improving</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parent Communication</strong></td>
+                        <td>Home Progress Report</td>
+                        <td>Positive</td>
+                        <td>Mixed</td>
+                        <td><span class="status-badge status-success">↑ Improving</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="section-header">📈 Progress Visualizations</h3>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h4>Academic Performance Trends (8 Weeks)</h4>
+                    <div class="chart-wrapper">
+                        <canvas id="academicChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h4>Multi-Domain Assessment Breakdown</h4>
+                    <div class="chart-wrapper">
+                        <canvas id="domainChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-header">✅ Recommended Interventions</h3>
+
+            <div class="recommendations">
+                <h4>Strengths to Build On:</h4>
+                <ul>
+                    <li>Attendance improved by 6% over last week - continue attendance recognition program</li>
+                    <li>GPA increased from 2.6 to 2.8 - math tutoring is showing positive results</li>
+                    <li>Behavioral incidents decreased - conflict resolution strategies working well</li>
+                    <li>Parent engagement has increased - maintain weekly check-in calls</li>
+                </ul>
+            </div>
+
+            <div class="action-items">
+                <h4>Action Items for This Week:</h4>
+                <ul>
+                    <li>Schedule follow-up math tutoring session (Tuesdays & Thursdays, 3:00 PM)</li>
+                    <li>Continue small group SEL check-ins with Ms. Rodriguez (Wednesdays, 10:00 AM)</li>
+                    <li>Monitor attendance closely - goal to reach 90% by end of month</li>
+                    <li>Share positive progress report with parents via phone call by Friday</li>
+                    <li>Consider reducing to Tier 1 support if improvements continue for 2 more weeks</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f7fafc; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                <p style="color: #1e40af; font-style: italic;"><strong>Automated Report Generated:</strong> This report was automatically compiled by my multi-source assessment platform, pulling real-time data from all 5 sources and calculating composite metrics. I receive these reports every Monday morning at 6 AM for all 120+ students, saving approximately 60% of manual compilation time while ensuring no student falls through the cracks.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Academic Performance Chart
+        const academicCtx = document.getElementById('academicChart').getContext('2d');
+        new Chart(academicCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
+                datasets: [
+                    {
+                        label: 'GPA',
+                        data: [2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.6, 2.8],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Attendance %',
+                        data: [75, 78, 80, 82, 81, 83, 82, 88],
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 0,
+                        max: 4,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'GPA'
+                        }
+                    },
+                    y1: {
+                        beginAtZero: false,
+                        min: 60,
+                        max: 100,
+                        position: 'right',
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Attendance %'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Domain Breakdown Chart
+        const domainCtx = document.getElementById('domainChart').getContext('2d');
+        new Chart(domainCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Academic', 'Attendance', 'Behavior', 'Engagement', 'SEL', 'Home Support'],
+                datasets: [{
+                    label: 'Current Week',
+                    data: [70, 88, 80, 70, 75, 78],
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                    pointBackgroundColor: '#f59e0b'
+                }, {
+                    label: 'Previous Week',
+                    data: [65, 82, 75, 60, 70, 65],
+                    borderColor: '#cbd5e1',
+                    backgroundColor: 'rgba(203, 213, 225, 0.2)',
+                    pointBackgroundColor: '#cbd5e1'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

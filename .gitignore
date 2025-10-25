@@ -48,17 +48,22 @@ data/processed/*
 !data/.gitkeep
 
 # Generated Files
-# Allow portfolio and platform HTML files, ignore generated reports
 *.pkl
 *.joblib
 *.pdf
-# Ignore generated HTML reports but not the portfolio files
+# Allow demo.html files but ignore other generated HTML reports
 mtss-dashboard/*.html
+!mtss-dashboard/demo.html
 progress-monitoring/*.html
+!progress-monitoring/demo.html
 equity-tracking/*.html
+!equity-tracking/demo.html
 etl-pipeline/*.html
+!etl-pipeline/demo.html
 predictive-model/*.html
+!predictive-model/demo.html
 assessment-platform/*.html
+!assessment-platform/demo.html
 
 # Logs
 *.log
