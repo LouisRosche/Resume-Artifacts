@@ -121,16 +121,6 @@
         </div>
     </section>
 
-    <!-- Navigation -->
-    <nav role="navigation" aria-label="Main navigation">
-        <ul>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#integration">Integration</a></li>
-            <li><a href="#stakeholders">For Stakeholders</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
     <!-- Main Content -->
     <main id="main-content">
         <!-- Projects Section -->
@@ -561,6 +551,30 @@
             </a>
         </div>
     </section>
+
+    <!-- Accessibility Toggle -->
+    <div class="accessibility-toggle">
+        <button class="accessibility-toggle-button" aria-label="Accessibility settings" aria-expanded="false" aria-controls="accessibility-panel">
+            ⚙️
+        </button>
+        <div class="accessibility-panel" id="accessibility-panel" role="region" aria-label="Accessibility settings">
+            <h3>Display Settings</h3>
+            <div class="accessibility-option">
+                <label>
+                    <input type="checkbox" id="dark-mode-toggle" aria-describedby="dark-mode-info">
+                    <span>Dark Mode</span>
+                </label>
+                <p class="accessibility-info" id="dark-mode-info">Reduces eye strain in low-light environments</p>
+            </div>
+            <div class="accessibility-option">
+                <label>
+                    <input type="checkbox" id="colorblind-mode-toggle" aria-describedby="colorblind-mode-info">
+                    <span>Colorblind-Safe Palette</span>
+                </label>
+                <p class="accessibility-info" id="colorblind-mode-info">Uses blue-orange colors safe for all colorblindness types</p>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="script.js"></script>

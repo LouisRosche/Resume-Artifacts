@@ -3,8 +3,10 @@
  * Accessible, responsive, and following WCAG 2.2 AA standards
  * Modern CSS features: text-wrap, content-visibility, :has() selector
  * Performance optimized for Core Web Vitals (INP, LCP, CLS)
+ * Unified theming: Dark mode + Colorblind-safe palettes
  */
 
+/* Light mode (default) */
 :root {
     --primary: #2563eb;
     --secondary: #10b981;
@@ -12,6 +14,43 @@
     --dark: #1e293b;
     --light: #f8fafc;
     --text: #334155;
+    --bg: #ffffff;
+    --bg-secondary: #f8fafc;
+    --border: #e2e8f0;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+    --primary: #3b82f6;
+    --secondary: #34d399;
+    --accent: #a78bfa;
+    --dark: #0f172a;
+    --light: #1e293b;
+    --text: #e2e8f0;
+    --bg: #0f172a;
+    --bg-secondary: #1e293b;
+    --border: #334155;
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* Colorblind-safe mode (deuteranopia, protanopia, tritanopia safe) */
+[data-theme="colorblind"],
+[data-theme="colorblind-dark"] {
+    --primary: #0173B2;
+    --secondary: #DE8F05;
+    --accent: #029E73;
+}
+
+/* Dark + colorblind mode */
+[data-theme="colorblind-dark"] {
+    --dark: #0f172a;
+    --light: #1e293b;
+    --text: #e2e8f0;
+    --bg: #0f172a;
+    --bg-secondary: #1e293b;
+    --border: #334155;
+    --shadow: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -24,7 +63,8 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text);
-    background: var(--light);
+    background: var(--bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Modern CSS: Balanced text wrapping for headings */
@@ -59,12 +99,12 @@ section {
     outline-offset: 2px;
 }
 
-/* Sidebar Navigation - Full viewport height navigation */
+/* Sidebar Navigation - Full viewport height navigation (480px wide) */
 .sidebar-nav {
     position: fixed;
     left: 0;
     top: 0;
-    width: 240px;
+    width: 480px;
     height: 100vh;
     background: white;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
@@ -192,10 +232,10 @@ section {
     }
 }
 
-/* Adjust main content to account for sidebar on desktop */
+/* Adjust main content to account for sidebar on desktop (480px wide) */
 @media (min-width: 769px) {
     body {
-        margin-left: 240px;
+        margin-left: 480px;
     }
 }
 
@@ -281,35 +321,6 @@ nav a:focus-visible {
 }
 
 /* Navigation */
-nav {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 12px;
-}
-
-nav a {
-    color: var(--text);
-    text-decoration: none;
-    padding: 12px 20px;
-    transition: all 0.3s;
-    border-radius: 4px;
-}
-
-nav a:hover {
-    color: var(--primary);
-    background: rgba(37, 99, 235, 0.05);
-}
-
 /* Container */
 .container {
     max-width: 1200px;
@@ -734,5 +745,119 @@ nav a:hover {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* Accessibility Toggle Component */
+.accessibility-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.accessibility-toggle-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.accessibility-toggle-button:hover {
+    transform: scale(1.1);
+    background: var(--accent);
+}
+
+.accessibility-toggle-button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.accessibility-panel {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 280px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px var(--shadow);
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.accessibility-panel.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.accessibility-panel h3 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: var(--text);
+}
+
+.accessibility-option {
+    margin-bottom: 16px;
+}
+
+.accessibility-option label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.accessibility-option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.accessibility-option input[type="checkbox"]:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.accessibility-info {
+    font-size: 0.85rem;
+    color: var(--text);
+    opacity: 0.8;
+    margin-top: 4px;
+    padding-left: 32px;
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .accessibility-toggle {
+        bottom: 80px;
+    }
+
+    .accessibility-panel {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        width: calc(100vw - 40px);
+        max-width: 320px;
+    }
+
+    .accessibility-panel.active {
+        transform: translateX(-50%) translateY(0);
     }
 }

@@ -312,10 +312,91 @@ function initSidebarScrolling() {
     });
 }
 
+/**
+ * Accessibility Toggle System
+ * Handles dark mode and colorblind-safe themes with localStorage persistence
+ */
+function initAccessibilityToggle() {
+    const toggleButton = document.querySelector('.accessibility-toggle-button');
+    const panel = document.getElementById('accessibility-panel');
+    const darkModeCheckbox = document.getElementById('dark-mode-toggle');
+    const colorblindModeCheckbox = document.getElementById('colorblind-mode-toggle');
+
+    if (!toggleButton || !panel) return;
+
+    // Load saved preferences from localStorage
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    const savedColorblindMode = localStorage.getItem('colorblindMode') === 'true';
+
+    // Apply saved preferences
+    if (savedDarkMode && darkModeCheckbox) {
+        darkModeCheckbox.checked = true;
+    }
+    if (savedColorblindMode && colorblindModeCheckbox) {
+        colorblindModeCheckbox.checked = true;
+    }
+    applyTheme();
+
+    // Toggle panel visibility
+    toggleButton.addEventListener('click', function() {
+        const isExpanded = panel.classList.toggle('active');
+        toggleButton.setAttribute('aria-expanded', isExpanded);
+    });
+
+    // Close panel when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.accessibility-toggle')) {
+            panel.classList.remove('active');
+            toggleButton.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Dark mode toggle
+    if (darkModeCheckbox) {
+        darkModeCheckbox.addEventListener('change', function() {
+            localStorage.setItem('darkMode', this.checked);
+            applyTheme();
+        });
+    }
+
+    // Colorblind mode toggle
+    if (colorblindModeCheckbox) {
+        colorblindModeCheckbox.addEventListener('change', function() {
+            localStorage.setItem('colorblindMode', this.checked);
+            applyTheme();
+        });
+    }
+}
+
+/**
+ * Apply theme based on selected options
+ * Supports: light, dark, colorblind, dark+colorblind
+ */
+function applyTheme() {
+    const darkMode = document.getElementById('dark-mode-toggle')?.checked || false;
+    const colorblindMode = document.getElementById('colorblind-mode-toggle')?.checked || false;
+
+    const html = document.documentElement;
+
+    // Remove all theme attributes first
+    html.removeAttribute('data-theme');
+
+    // Apply theme based on combination
+    if (darkMode && colorblindMode) {
+        html.setAttribute('data-theme', 'colorblind-dark');
+    } else if (darkMode) {
+        html.setAttribute('data-theme', 'dark');
+    } else if (colorblindMode) {
+        html.setAttribute('data-theme', 'colorblind');
+    }
+    // If neither is checked, use default light mode (no data-theme attribute)
+}
+
 // Initialize scroll-spy and sidebar scrolling on load
 document.addEventListener('DOMContentLoaded', function() {
     initScrollSpy();
     initSidebarScrolling();
+    initAccessibilityToggle();
 });
 
 // Export functions for use in inline handlers (temporary until full migration)

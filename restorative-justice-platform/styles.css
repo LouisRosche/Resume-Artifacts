@@ -25,6 +25,13 @@ body {
     line-height: 1.6;
 }
 
+/* Adjust for sidebar on desktop */
+@media (min-width: 769px) {
+    body {
+        margin-left: 480px;
+    }
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
