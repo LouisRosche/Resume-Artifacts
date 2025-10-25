@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workflow Automation System - Louis Rosche</title>
+    <link rel="stylesheet" href="../styles.css">
     <style>
         * {
             margin: 0;
@@ -16,6 +17,12 @@
             background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             padding: 20px;
             min-height: 100vh;
+        }
+
+        @media (min-width: 769px) {
+            body {
+                margin-left: 240px;
+            }
         }
 
         .container {
@@ -321,6 +328,58 @@
     </style>
 </head>
 <body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar-nav" role="navigation" aria-label="Navigation">
+        <a href="../index.html" class="sidebar-back">
+            <span class="back-icon" role="img" aria-label="Back arrow">←</span>
+            <span>Back to Portfolio</span>
+        </a>
+        <div class="sidebar-header">
+            <span class="sidebar-icon" role="img" aria-label="Current page">⚙️</span>
+            <span class="sidebar-title">Workflow Automation</span>
+        </div>
+        <div class="sidebar-links-container">
+            <ul class="sidebar-links">
+                <li><a href="../index.html#hero" class="sidebar-link">
+                    <span class="link-icon">🏠</span>
+                    <span class="link-text">Overview</span>
+                </a></li>
+                <li><a href="../index.html#projects" class="sidebar-link">
+                    <span class="link-icon">🚀</span>
+                    <span class="link-text">All Projects (8)</span>
+                </a></li>
+                <li><a href="../predictive-model/demo.html" class="sidebar-link">
+                    <span class="link-icon">🤖</span>
+                    <span class="link-text">Risk Prediction</span>
+                </a></li>
+                <li><a href="../mtss-dashboard/demo.html" class="sidebar-link">
+                    <span class="link-icon">📊</span>
+                    <span class="link-text">MTSS Dashboard</span>
+                </a></li>
+                <li><a href="../etl-pipeline/demo.html" class="sidebar-link">
+                    <span class="link-icon">🔄</span>
+                    <span class="link-text">ETL Pipeline</span>
+                </a></li>
+                <li><a href="../equity-tracking/demo.html" class="sidebar-link">
+                    <span class="link-icon">⚖️</span>
+                    <span class="link-text">Equity Tracking</span>
+                </a></li>
+                <li><a href="../progress-monitoring/demo.html" class="sidebar-link">
+                    <span class="link-icon">📈</span>
+                    <span class="link-text">Progress Monitoring</span>
+                </a></li>
+                <li><a href="../assessment-platform/demo.html" class="sidebar-link">
+                    <span class="link-icon">📝</span>
+                    <span class="link-text">Assessment Platform</span>
+                </a></li>
+                <li><a href="../workflow-automation/demo.html" class="sidebar-link">
+                    <span class="link-icon">⚙️</span>
+                    <span class="link-text">Workflow Automation</span>
+                </a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="container">
         <div class="header">
             <h1>⚡ Automated Mentoring Workflow System</h1>

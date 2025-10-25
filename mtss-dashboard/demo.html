@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTSS Dashboard - Live Demo</title>
+    <link rel="stylesheet" href="../styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {
@@ -16,6 +17,12 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #f8fafc;
             padding: 20px;
+        }
+
+        @media (min-width: 769px) {
+            body {
+                margin-left: 240px;
+            }
         }
 
         .header {
@@ -240,6 +247,54 @@
     </style>
 </head>
 <body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar-nav" role="navigation" aria-label="Navigation">
+        <a href="../index.html" class="sidebar-back">
+            <span class="back-icon" role="img" aria-label="Back arrow">←</span>
+            <span>Back to Portfolio</span>
+        </a>
+        <div class="sidebar-header">
+            <span class="sidebar-icon" role="img" aria-label="Current page">📊</span>
+            <span class="sidebar-title">MTSS Dashboard</span>
+        </div>
+        <div class="sidebar-links-container">
+            <ul class="sidebar-links">
+                <li><a href="../index.html#hero" class="sidebar-link">
+                    <span class="link-icon">🏠</span>
+                    <span class="link-text">Overview</span>
+                </a></li>
+                <li><a href="../index.html#projects" class="sidebar-link">
+                    <span class="link-icon">🚀</span>
+                    <span class="link-text">All Projects (8)</span>
+                </a></li>
+                <li><a href="../predictive-model/demo.html" class="sidebar-link">
+                    <span class="link-icon">🤖</span>
+                    <span class="link-text">Risk Prediction</span>
+                </a></li>
+                <li><a href="../etl-pipeline/demo.html" class="sidebar-link">
+                    <span class="link-icon">🔄</span>
+                    <span class="link-text">ETL Pipeline</span>
+                </a></li>
+                <li><a href="../equity-tracking/demo.html" class="sidebar-link">
+                    <span class="link-icon">⚖️</span>
+                    <span class="link-text">Equity Tracking</span>
+                </a></li>
+                <li><a href="../progress-monitoring/demo.html" class="sidebar-link">
+                    <span class="link-icon">📈</span>
+                    <span class="link-text">Progress Monitoring</span>
+                </a></li>
+                <li><a href="../assessment-platform/demo.html" class="sidebar-link">
+                    <span class="link-icon">📝</span>
+                    <span class="link-text">Assessment Platform</span>
+                </a></li>
+                <li><a href="../workflow-automation/demo.html" class="sidebar-link">
+                    <span class="link-icon">⚙️</span>
+                    <span class="link-text">Workflow Automation</span>
+                </a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="header">
         <h1>📊 MTSS Real-Time Tracking Dashboard</h1>
         <p>I built this interactive dashboard to track 150+ students across Tier 2 and Tier 3 interventions in real-time. The system consolidates data from multiple sources, automatically identifies students needing urgent support, and saves me 12 hours weekly by eliminating manual data entry.</p>
