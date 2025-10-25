@@ -29,9 +29,9 @@ Get up and running with the portfolio artifacts in under 10 minutes.
 3. Check [Impact Metrics](docs/IMPACT_METRICS.md)
 
 **Questions to ask yourself:**
-- Can this person deliver measurable results? ✅
-- Do they understand both tech and domain? ✅
-- Can they work at scale? ✅ (15,000+ users)
+- Can I deliver measurable results? ✅
+- Do I understand both tech and domain? ✅
+- Can I work at scale? ✅ (15,000+ users)
 
 ---
 
@@ -332,6 +332,6 @@ Each folder has:
 
 ---
 
-**Remember:** These aren't just portfolio pieces - they're production systems that improved outcomes for 500+ students and saved 40+ hours weekly.
+**Remember:** These aren't just portfolio pieces - they're production systems I built that improved outcomes for 500+ students and saved 40+ hours weekly.
 
-**The code is the proof. The metrics are the impact. The stories are the mission.**
+**The code is the proof. The metrics are the impact. The stories are my mission.**

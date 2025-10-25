@@ -1,10 +1,10 @@
 # Automated Progress Monitoring System
 
-SQL-based system for PowerSchool database integration that generates weekly intervention reports for 60+ Tier 2/3 students automatically.
+I developed this SQL-based system for PowerSchool database integration that generates weekly intervention reports for 60+ Tier 2/3 students automatically.
 
 ## Overview
 
-This system eliminates 8 hours of manual data compilation per week by using automated SQL queries on the PowerSchool database to generate comprehensive intervention reports.
+I built this system to eliminate 8 hours of manual data compilation per week by using automated SQL queries on the PowerSchool database to generate comprehensive intervention reports.
 
 ## Key Features
 
@@ -96,7 +96,7 @@ ORDER BY s.tier, s.name
 
 ## Database Structure
 
-The system works with a PowerSchool-like database with these tables:
+I designed this system to work with a PowerSchool-like database with these tables:
 
 - **students**: Student demographics and tier information
 - **assessments**: Weekly assessment scores (reading, math, behavior)
@@ -196,6 +196,8 @@ export_df = weekly_report[[
 ```
 
 ## Benefits
+
+I designed this system to provide specific benefits for different stakeholders:
 
 ### For Administrators
 - Weekly snapshots of all Tier 2/3 students

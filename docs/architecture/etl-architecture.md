@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Nonprofit Data Integration ETL Pipeline integrates data from 45 organizations across 5 disparate systems, serving 15,000+ children. This document describes the architecture, data flow, and technical implementation.
+I built this Nonprofit Data Integration ETL Pipeline to integrate data from 45 organizations across 5 disparate systems, serving 15,000+ children. This document describes the architecture, data flow, and technical implementation.
 
 ## System Architecture
 
@@ -205,8 +205,8 @@ def extract_from_excel(file_path, org_id):
 ```python
 def validate_data(df, org_id):
     """
-    Comprehensive data quality checks
-    Identified 2,400+ inconsistencies across 45 organizations
+    Comprehensive data quality checks I implemented
+    I identified 2,400+ inconsistencies across 45 organizations
     """
     issues = []
 
@@ -268,7 +268,7 @@ def validate_data(df, org_id):
 def clean_data(df):
     """
     Clean and standardize data
-    Improved metric reliability from 71% to 93%
+    I improved metric reliability from 71% to 93%
     """
     # 1. Standardize child IDs (hash for privacy)
     df['child_hash'] = df['child_id'].apply(
@@ -463,6 +463,8 @@ REFRESH MATERIALIZED VIEW CONCURRENTLY agg_organization_metrics;
 
 ### Metrics
 
+Through my implementation, I achieved these quality improvements:
+
 | Quality Dimension | Before | After | Improvement |
 |-------------------|--------|-------|-------------|
 | Completeness | 85% | 97% | +12% |
@@ -472,11 +474,11 @@ REFRESH MATERIALIZED VIEW CONCURRENTLY agg_organization_metrics;
 
 ### Validation Results
 
-**Across 45 Organizations:**
-- **2,400+ data inconsistencies** identified
-- **1,200 missing value issues** resolved
-- **800 out-of-range values** corrected
-- **400 duplicate records** removed
+**Across 45 Organizations, I:**
+- **Identified 2,400+ data inconsistencies**
+- **Resolved 1,200 missing value issues**
+- **Corrected 800 out-of-range values**
+- **Removed 400 duplicate records**
 
 ## Monitoring & Alerting
 
@@ -529,18 +531,21 @@ def monitor_pipeline_health():
 ## Scalability Plan
 
 ### Current (45 Organizations)
+I designed the current implementation to handle:
 - Single PostgreSQL instance
 - Sequential processing
 - ~6 hours for full pipeline
 - 15,000 children tracked
 
 ### Phase 2 (100 Organizations)
+My plan to scale to 100 organizations includes:
 - Read replicas for reporting
 - Parallel extraction (4-8 workers)
 - ~8 hours for full pipeline
 - 30,000+ children
 
 ### Phase 3 (500 Organizations)
+My long-term scalability vision includes:
 - Distributed processing (Apache Airflow)
 - Database sharding by organization
 - Redis caching layer

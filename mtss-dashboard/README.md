@@ -1,10 +1,10 @@
 # MTSS Real-Time Tracking Dashboard
 
-Real-time Multi-Tiered System of Support (MTSS) tracking dashboard built with Python, pandas, and Plotly.
+I created this real-time Multi-Tiered System of Support (MTSS) tracking dashboard built with Python, pandas, and Plotly.
 
 ## Overview
 
-This dashboard processes weekly assessment data for 150+ students across Tier 2 and Tier 3 interventions, providing real-time insights that enable same-day intervention adjustments.
+I built this dashboard to process weekly assessment data for 150+ students across Tier 2 and Tier 3 interventions, providing real-time insights that enable same-day intervention adjustments.
 
 ### Key Impact Metrics
 - **12 hours** weekly reduction in data entry time
@@ -180,6 +180,8 @@ dashboard.students['custom_metric'] = (
 ```
 
 ## Benefits
+
+I designed this dashboard to provide specific benefits for different stakeholders:
 
 ### For Administrators
 - Real-time visibility into intervention effectiveness
