@@ -70,10 +70,39 @@
                     <span class="link-icon">🏠</span>
                     <span class="link-text">Overview</span>
                 </a></li>
-                <li><a href="#projects" class="sidebar-link" data-section="projects">
-                    <span class="link-icon">🚀</span>
-                    <span class="link-text">Projects</span>
-                </a></li>
+                <li class="has-dropdown">
+                    <a href="#projects" class="sidebar-link" data-section="projects">
+                        <span class="link-icon">🚀</span>
+                        <span class="link-text">Projects</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <ul class="sidebar-dropdown">
+                        <li><a href="predictive-model/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Student Risk Prediction Model</span>
+                        </a></li>
+                        <li><a href="mtss-dashboard/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">MTSS Real-Time Tracking Dashboard</span>
+                        </a></li>
+                        <li><a href="etl-pipeline/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Multi-Source ETL Pipeline Dashboard</span>
+                        </a></li>
+                        <li><a href="equity-tracking/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Foster Care Equity Tracking Dashboard</span>
+                        </a></li>
+                        <li><a href="progress-monitoring/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Automated Progress Monitoring System</span>
+                        </a></li>
+                        <li><a href="assessment-platform/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Multi-Source Assessment Platform</span>
+                        </a></li>
+                        <li><a href="workflow-automation/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Automated Mentoring Workflow System</span>
+                        </a></li>
+                        <li><a href="restorative-justice-platform/index.html" class="sidebar-link-sub">
+                            <span class="link-text">Restorative Justice Circle Platform</span>
+                        </a></li>
+                    </ul>
+                </li>
                 <li><a href="#integration" class="sidebar-link" data-section="integration">
                     <span class="link-icon">🔗</span>
                     <span class="link-text">Integration</span>
@@ -336,42 +365,348 @@
             </div>
         </section>
 
-        <!-- Integration Diagram -->
+        <!-- Integration Architecture -->
         <section id="integration" class="integration-section">
             <div class="container">
-                <h2 class="section-heading">How It All Connects</h2>
+                <h2 class="section-heading">System Architecture</h2>
                 <p class="section-subtitle">
-                    These aren't isolated projects – they're an interconnected ecosystem for data-driven student support.
+                    An interconnected ecosystem where each component processes data and enables the next layer of functionality.
                 </p>
 
-                <div class="integration-diagram">
-                    <div class="system-flow">
-                        <div class="system-box">
-                            <strong>Data Collection</strong>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">
-                                PowerSchool, Google Forms, Staff Observations
-                            </p>
+                <div class="architecture-tabs" role="tablist" aria-label="Architecture views">
+                    <button class="arch-tab-btn active" role="tab" aria-selected="true" aria-controls="arch-overview" onclick="showArchTab('overview')">
+                        Overview
+                    </button>
+                    <button class="arch-tab-btn" role="tab" aria-selected="false" aria-controls="arch-data-layer" onclick="showArchTab('data-layer')">
+                        Data Layer
+                    </button>
+                    <button class="arch-tab-btn" role="tab" aria-selected="false" aria-controls="arch-ml-layer" onclick="showArchTab('ml-layer')">
+                        ML & Analytics
+                    </button>
+                    <button class="arch-tab-btn" role="tab" aria-selected="false" aria-controls="arch-automation" onclick="showArchTab('automation')">
+                        Automation
+                    </button>
+                </div>
+
+                <!-- Overview Tab -->
+                <div id="arch-overview" class="arch-tab-content active" role="tabpanel">
+                    <div class="architecture-layers">
+                        <div class="arch-layer">
+                            <h3 class="layer-title">Data Sources</h3>
+                            <div class="layer-components">
+                                <div class="arch-component source">
+                                    <span class="component-icon">📊</span>
+                                    <span class="component-name">PowerSchool SIS</span>
+                                </div>
+                                <div class="arch-component source">
+                                    <span class="component-icon">📝</span>
+                                    <span class="component-name">Google Forms</span>
+                                </div>
+                                <div class="arch-component source">
+                                    <span class="component-icon">👥</span>
+                                    <span class="component-name">Staff Observations</span>
+                                </div>
+                                <div class="arch-component source">
+                                    <span class="component-icon">📋</span>
+                                    <span class="component-name">Assessment Data</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="arrow" aria-hidden="true">→</div>
-                        <div class="system-box">
-                            <strong>ETL Pipeline</strong>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">
-                                Validate, Transform, Centralize (45 orgs)
-                            </p>
+
+                        <div class="layer-arrow">↓</div>
+
+                        <div class="arch-layer">
+                            <h3 class="layer-title">Data Processing</h3>
+                            <div class="layer-components">
+                                <a href="#project-3-title" class="arch-component pipeline">
+                                    <span class="component-icon">🔄</span>
+                                    <span class="component-name">ETL Pipeline</span>
+                                    <span class="component-detail">45 orgs, real-time sync</span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="arrow" aria-hidden="true">→</div>
-                        <div class="system-box">
-                            <strong>ML & Analytics</strong>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">
-                                Predictive Model, Risk Scoring, Dashboards
-                            </p>
+
+                        <div class="layer-arrow">↓</div>
+
+                        <div class="arch-layer">
+                            <h3 class="layer-title">Analytics & ML</h3>
+                            <div class="layer-components">
+                                <a href="#project-1-title" class="arch-component ml">
+                                    <span class="component-icon">🤖</span>
+                                    <span class="component-name">Risk Prediction</span>
+                                    <span class="component-detail">95%+ accuracy</span>
+                                </a>
+                                <a href="#project-2-title" class="arch-component ml">
+                                    <span class="component-icon">📊</span>
+                                    <span class="component-name">MTSS Dashboard</span>
+                                    <span class="component-detail">Real-time tracking</span>
+                                </a>
+                                <a href="#project-4-title" class="arch-component ml">
+                                    <span class="component-icon">⚖️</span>
+                                    <span class="component-name">Equity Tracker</span>
+                                    <span class="component-detail">Bias detection</span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="arrow" aria-hidden="true">→</div>
-                        <div class="system-box">
-                            <strong>Action & Support</strong>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">
-                                Automated Reports, Interventions, Tracking
-                            </p>
+
+                        <div class="layer-arrow">↓</div>
+
+                        <div class="arch-layer">
+                            <h3 class="layer-title">Automation & Action</h3>
+                            <div class="layer-components">
+                                <a href="#project-5-title" class="arch-component automation">
+                                    <span class="component-icon">📈</span>
+                                    <span class="component-name">Progress Monitoring</span>
+                                    <span class="component-detail">Auto-updates</span>
+                                </a>
+                                <a href="#project-7-title" class="arch-component automation">
+                                    <span class="component-icon">⚙️</span>
+                                    <span class="component-name">Workflow System</span>
+                                    <span class="component-detail">650+ hours saved</span>
+                                </a>
+                                <a href="#project-6-title" class="arch-component automation">
+                                    <span class="component-icon">📝</span>
+                                    <span class="component-name">Assessment Platform</span>
+                                    <span class="component-detail">Multi-source</span>
+                                </a>
+                                <a href="#project-8-title" class="arch-component automation">
+                                    <span class="component-icon">🤝</span>
+                                    <span class="component-name">Restorative Justice</span>
+                                    <span class="component-detail">120+ circles/year</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Layer Tab -->
+                <div id="arch-data-layer" class="arch-tab-content" role="tabpanel">
+                    <h3>Data Collection & Processing</h3>
+                    <div class="integration-flow">
+                        <div class="flow-card">
+                            <h4>🔄 ETL Pipeline Dashboard</h4>
+                            <div class="flow-section">
+                                <strong>Data Sources:</strong>
+                                <ul>
+                                    <li>PowerSchool API (attendance, grades, demographics)</li>
+                                    <li>Google Sheets (staff observations, forms)</li>
+                                    <li>CSV exports (historical data, assessments)</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Processing:</strong>
+                                <ul>
+                                    <li>Validates data quality and consistency</li>
+                                    <li>Transforms into standardized schema</li>
+                                    <li>Centralizes across 45 partner organizations</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Outputs To:</strong>
+                                <ul>
+                                    <li>Risk Prediction Model (training data)</li>
+                                    <li>MTSS Dashboard (real-time metrics)</li>
+                                    <li>Equity Tracker (demographic analysis)</li>
+                                    <li>Progress Monitoring (intervention tracking)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ML & Analytics Tab -->
+                <div id="arch-ml-layer" class="arch-tab-content" role="tabpanel">
+                    <h3>Machine Learning & Analytics Components</h3>
+                    <div class="integration-flow">
+                        <div class="flow-card">
+                            <h4>🤖 Student Risk Prediction Model</h4>
+                            <div class="flow-section">
+                                <strong>Inputs:</strong>
+                                <ul>
+                                    <li>ETL Pipeline: 14 risk indicators (attendance, behavior, grades, family factors)</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Processing:</strong>
+                                <ul>
+                                    <li>XGBoost ML model with 95%+ accuracy</li>
+                                    <li>Predicts crisis events 2-3 weeks early</li>
+                                    <li>Updates risk scores daily</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Outputs To:</strong>
+                                <ul>
+                                    <li>MTSS Dashboard (risk visualizations)</li>
+                                    <li>Progress Monitoring (intervention triggers)</li>
+                                    <li>Workflow Automation (alert notifications)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flow-card">
+                            <h4>📊 MTSS Real-Time Tracking Dashboard</h4>
+                            <div class="flow-section">
+                                <strong>Inputs:</strong>
+                                <ul>
+                                    <li>ETL Pipeline: Real-time student data</li>
+                                    <li>Risk Prediction Model: Daily risk scores</li>
+                                    <li>Progress Monitoring: Intervention outcomes</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Processing:</strong>
+                                <ul>
+                                    <li>Aggregates metrics across 15,000+ students</li>
+                                    <li>Visualizes trends and patterns</li>
+                                    <li>Tracks tier distribution (Tier 1/2/3)</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Outputs To:</strong>
+                                <ul>
+                                    <li>Staff dashboards (decision support)</li>
+                                    <li>Automated reports (weekly summaries)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flow-card">
+                            <h4>⚖️ Foster Care Equity Tracking Dashboard</h4>
+                            <div class="flow-section">
+                                <strong>Inputs:</strong>
+                                <ul>
+                                    <li>ETL Pipeline: Demographic data, intervention assignments</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Processing:</strong>
+                                <ul>
+                                    <li>Statistical bias detection algorithms</li>
+                                    <li>Analyzes resource allocation patterns</li>
+                                    <li>Identifies systemic inequities</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Outputs To:</strong>
+                                <ul>
+                                    <li>Leadership reports (equity audits)</li>
+                                    <li>Policy recommendations (intervention adjustments)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automation Tab -->
+                <div id="arch-automation" class="arch-tab-content" role="tabpanel">
+                    <h3>Automation & Workflow Systems</h3>
+                    <div class="integration-flow">
+                        <div class="flow-card">
+                            <h4>📈 Automated Progress Monitoring System</h4>
+                            <div class="flow-section">
+                                <strong>Inputs:</strong>
+                                <ul>
+                                    <li>ETL Pipeline: Student metrics, intervention data</li>
+                                    <li>Risk Prediction: Crisis alerts</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Processing:</strong>
+                                <ul>
+                                    <li>SQLite database with scheduled queries</li>
+                                    <li>Calculates progress percentages automatically</li>
+                                    <li>Generates trend visualizations</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Outputs To:</strong>
+                                <ul>
+                                    <li>Staff reports (automated weekly updates)</li>
+                                    <li>Parent communications (progress snapshots)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flow-card">
+                            <h4>⚙️ Automated Mentoring Workflow System</h4>
+                            <div class="flow-section">
+                                <strong>Inputs:</strong>
+                                <ul>
+                                    <li>Google Sheets: Mentor schedules, student assignments</li>
+                                    <li>Risk Prediction: High-priority students</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Processing:</strong>
+                                <ul>
+                                    <li>Google Apps Script automation</li>
+                                    <li>Smart matching algorithm (availability + needs)</li>
+                                    <li>Auto-generates communications and calendars</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Outputs To:</strong>
+                                <ul>
+                                    <li>Email notifications (mentor assignments)</li>
+                                    <li>Calendar events (session schedules)</li>
+                                    <li>Progress tracking (mentor impact metrics)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flow-card">
+                            <h4>📝 Multi-Source Assessment Platform</h4>
+                            <div class="flow-section">
+                                <strong>Inputs:</strong>
+                                <ul>
+                                    <li>IXL API: Academic assessments</li>
+                                    <li>FastBridge API: Universal screening</li>
+                                    <li>Google Forms: Custom assessments</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Processing:</strong>
+                                <ul>
+                                    <li>Normalizes scores across platforms</li>
+                                    <li>Aggregates multi-source data per student</li>
+                                    <li>Visualizes comprehensive assessment profiles</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Outputs To:</strong>
+                                <ul>
+                                    <li>MTSS Dashboard (holistic student view)</li>
+                                    <li>Progress Monitoring (academic tracking)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flow-card">
+                            <h4>🤝 Restorative Justice Circle Platform</h4>
+                            <div class="flow-section">
+                                <strong>Inputs:</strong>
+                                <ul>
+                                    <li>Staff referrals: Student conflict reports</li>
+                                    <li>Circle facilitator data: Session scheduling</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Processing:</strong>
+                                <ul>
+                                    <li>Session management interface</li>
+                                    <li>Protocol library (4 circle types)</li>
+                                    <li>Participation tracking</li>
+                                </ul>
+                            </div>
+                            <div class="flow-section">
+                                <strong>Outputs To:</strong>
+                                <ul>
+                                    <li>Metrics dashboard (120+ sessions/year)</li>
+                                    <li>Resolution tracking (87% success rate)</li>
+                                    <li>Staff training reports</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -390,7 +725,7 @@
                         id="recruiter-tab"
                         tabindex="0"
                         onclick="showTab('recruiter')">
-                    Recruiter (30 sec)
+                    Recruiter
                 </button>
                 <button class="tab-btn"
                         role="tab"
@@ -543,12 +878,6 @@
             <div class="contact-item">
                 💻 <a href="https://github.com/LouisRosche/Resume-Artifacts" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
-        </div>
-
-        <div class="mt-30">
-            <a href="https://github.com/LouisRosche/Resume-Artifacts/blob/main/QUICK_START.md" class="btn" style="background: white; color: var(--primary);" target="_blank" rel="noopener noreferrer">
-                📖 Quick Start Guide (GitHub)
-            </a>
         </div>
     </section>
 

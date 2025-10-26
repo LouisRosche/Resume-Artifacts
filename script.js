@@ -392,13 +392,59 @@ function applyTheme() {
     // If neither is checked, use default light mode (no data-theme attribute)
 }
 
+/**
+ * Initialize sidebar dropdown menus
+ */
+function initSidebarDropdowns() {
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+
+    dropdownItems.forEach(item => {
+        const link = item.querySelector('.sidebar-link');
+
+        link.addEventListener('click', function(e) {
+            // Only toggle dropdown if clicking on the projects section link
+            if (this.getAttribute('data-section') === 'projects') {
+                e.preventDefault();
+                item.classList.toggle('open');
+            }
+        });
+    });
+}
+
 // Initialize scroll-spy and sidebar scrolling on load
 document.addEventListener('DOMContentLoaded', function() {
     initScrollSpy();
     initSidebarScrolling();
     initAccessibilityToggle();
+    initSidebarDropdowns();
 });
+
+/**
+ * Architecture tab switching function
+ */
+function showArchTab(tabName) {
+    const tabs = document.querySelectorAll('.arch-tab-content');
+    const buttons = document.querySelectorAll('.arch-tab-btn');
+
+    tabs.forEach(tab => tab.classList.remove('active'));
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+    });
+
+    const activeTab = document.getElementById('arch-' + tabName);
+    if (activeTab) {
+        activeTab.classList.add('active');
+    }
+
+    const activeButton = event ? event.target : document.querySelector(`.arch-tab-btn[onclick*="${tabName}"]`);
+    if (activeButton) {
+        activeButton.classList.add('active');
+        activeButton.setAttribute('aria-selected', 'true');
+    }
+}
 
 // Export functions for use in inline handlers (temporary until full migration)
 window.showTab = showTab;
 window.filterProjects = filterProjects;
+window.showArchTab = showArchTab;

@@ -225,6 +225,59 @@ section {
     line-height: 1.4;
 }
 
+/* Dropdown arrow for expandable items */
+.dropdown-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+    margin-left: auto;
+}
+
+.has-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.sidebar-dropdown {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.has-dropdown.open .sidebar-dropdown {
+    max-height: 500px;
+}
+
+.sidebar-link-sub {
+    display: block;
+    padding: 8px 16px 8px 44px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+    margin-left: 12px;
+}
+
+.sidebar-link-sub:hover {
+    background: var(--bg-secondary);
+    color: var(--primary);
+    border-left-color: var(--primary);
+}
+
+.sidebar-link-sub.active {
+    background: var(--bg-secondary);
+    color: var(--primary);
+    font-weight: 600;
+    border-left-color: var(--primary);
+}
+
+.sidebar-link-sub .link-text {
+    line-height: 1.3;
+}
+
 /* Progress bar at bottom - enhanced visibility */
 .sidebar-progress {
     padding: 20px 24px;
@@ -535,6 +588,191 @@ nav a:focus-visible {
 
 .arrow {
     font-size: 2rem;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Architecture Tabs */
+.architecture-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0 40px 0;
+    flex-wrap: wrap;
+}
+
+.arch-tab-btn {
+    padding: 12px 24px;
+    min-height: 44px;
+    background: var(--bg);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.arch-tab-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.arch-tab-btn:hover:not(.active) {
+    background: var(--bg-secondary);
+    transform: translateY(-2px);
+}
+
+.arch-tab-content {
+    display: none;
+}
+
+.arch-tab-content.active {
+    display: block;
+}
+
+/* Architecture Layers (Overview) */
+.architecture-layers {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.arch-layer {
+    margin: 30px 0;
+}
+
+.layer-title {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.layer-components {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.arch-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    min-width: 180px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.arch-component:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.arch-component.source {
+    border-color: var(--secondary);
+}
+
+.arch-component.pipeline {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.arch-component.ml {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0.1) 100%);
+}
+
+.arch-component.automation {
+    border-color: var(--secondary);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+}
+
+.component-icon {
+    font-size: 2rem;
+}
+
+.component-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.component-detail {
+    font-size: 0.8rem;
+    color: var(--text);
+    opacity: 0.7;
+    text-align: center;
+}
+
+.layer-arrow {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* Integration Flow Cards (Per-Project) */
+.integration-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.flow-card {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.flow-card h4 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+}
+
+.flow-section {
+    margin: 20px 0;
+}
+
+.flow-section strong {
+    display: block;
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.flow-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.flow-section li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.flow-section li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
     color: var(--primary);
     font-weight: bold;
 }

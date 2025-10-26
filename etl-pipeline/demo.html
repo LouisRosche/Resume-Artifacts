@@ -245,37 +245,50 @@
                     <span class="link-icon">🏠</span>
                     <span class="link-text">Overview</span>
                 </a></li>
-                <li><a href="../index.html#projects" class="sidebar-link">
-                    <span class="link-icon">🚀</span>
-                    <span class="link-text">All Projects</span>
+                <li class="has-dropdown open">
+                    <a href="../index.html#projects" class="sidebar-link">
+                        <span class="link-icon">🚀</span>
+                        <span class="link-text">Projects</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <ul class="sidebar-dropdown">
+                        <li><a href="../predictive-model/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Student Risk Prediction Model</span>
+                        </a></li>
+                        <li><a href="../mtss-dashboard/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">MTSS Real-Time Tracking Dashboard</span>
+                        </a></li>
+                        <li><a href="demo.html" class="sidebar-link-sub active">
+                            <span class="link-text">Multi-Source ETL Pipeline Dashboard</span>
+                        </a></li>
+                        <li><a href="../equity-tracking/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Foster Care Equity Tracking Dashboard</span>
+                        </a></li>
+                        <li><a href="../progress-monitoring/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Automated Progress Monitoring System</span>
+                        </a></li>
+                        <li><a href="../assessment-platform/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Multi-Source Assessment Platform</span>
+                        </a></li>
+                        <li><a href="../workflow-automation/demo.html" class="sidebar-link-sub">
+                            <span class="link-text">Automated Mentoring Workflow System</span>
+                        </a></li>
+                        <li><a href="../restorative-justice-platform/index.html" class="sidebar-link-sub">
+                            <span class="link-text">Restorative Justice Circle Platform</span>
+                        </a></li>
+                    </ul>
+                </li>
+                <li><a href="../index.html#integration" class="sidebar-link">
+                    <span class="link-icon">🔗</span>
+                    <span class="link-text">Integration</span>
                 </a></li>
-                <li><a href="../predictive-model/demo.html" class="sidebar-link">
-                    <span class="link-icon">🤖</span>
-                    <span class="link-text">Risk Prediction</span>
+                <li><a href="../index.html#stakeholders" class="sidebar-link">
+                    <span class="link-icon">👥</span>
+                    <span class="link-text">Stakeholders</span>
                 </a></li>
-                <li><a href="../mtss-dashboard/demo.html" class="sidebar-link">
-                    <span class="link-icon">📊</span>
-                    <span class="link-text">MTSS Dashboard</span>
-                </a></li>
-                <li><a href="../etl-pipeline/demo.html" class="sidebar-link">
-                    <span class="link-icon">🔄</span>
-                    <span class="link-text">ETL Pipeline</span>
-                </a></li>
-                <li><a href="../equity-tracking/demo.html" class="sidebar-link">
-                    <span class="link-icon">⚖️</span>
-                    <span class="link-text">Equity Tracking</span>
-                </a></li>
-                <li><a href="../progress-monitoring/demo.html" class="sidebar-link">
-                    <span class="link-icon">📈</span>
-                    <span class="link-text">Progress Monitoring</span>
-                </a></li>
-                <li><a href="../assessment-platform/demo.html" class="sidebar-link">
-                    <span class="link-icon">📝</span>
-                    <span class="link-text">Assessment Platform</span>
-                </a></li>
-                <li><a href="../workflow-automation/demo.html" class="sidebar-link">
-                    <span class="link-icon">⚙️</span>
-                    <span class="link-text">Workflow Automation</span>
+                <li><a href="../index.html#contact" class="sidebar-link">
+                    <span class="link-icon">📧</span>
+                    <span class="link-text">Contact</span>
                 </a></li>
             </ul>
         </div>
@@ -560,6 +573,18 @@
                     }
                 }
             }
+        });
+
+        // Initialize sidebar dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownItems = document.querySelectorAll('.has-dropdown');
+            dropdownItems.forEach(item => {
+                const link = item.querySelector('.sidebar-link');
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                });
+            });
         });
     </script>
 </body>

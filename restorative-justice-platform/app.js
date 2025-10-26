@@ -58,7 +58,20 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCircles();
     loadProtocols();
     loadMetrics();
+    initSidebarDropdown();
 });
+
+// Initialize sidebar dropdown
+function initSidebarDropdown() {
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+    dropdownItems.forEach(item => {
+        const link = item.querySelector('.sidebar-link');
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            item.classList.toggle('open');
+        });
+    });
+}
 
 // Navigation between sections
 function setupNavigation() {
