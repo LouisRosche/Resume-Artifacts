@@ -43,6 +43,12 @@
 }
 
 /* Theme support for demo pages */
+/* Ensure body uses theme background */
+body {
+    background: var(--bg-secondary) !important;
+    color: var(--text) !important;
+}
+
 .header {
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     transition: background 0.3s ease;
@@ -56,6 +62,21 @@
     border: 1px solid var(--border);
     color: var(--text);
     transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure all headings in demo pages use proper theme colors */
+.input-panel h2,
+.input-panel h3,
+.output-panel h2,
+.output-panel h3,
+.prediction-panel h2,
+.prediction-panel h3,
+.card h2,
+.card h3,
+h2,
+h3,
+h4 {
+    color: var(--text) !important;
 }
 
 .slider-label,
@@ -75,10 +96,11 @@ input[type="range"] {
 
 select,
 input[type="text"],
-input[type="search"] {
-    background: var(--bg);
-    color: var(--text);
-    border: 1px solid var(--border);
+input[type="search"],
+textarea {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
 }
 
 /* Grid layouts for controls sections */
