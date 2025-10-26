@@ -484,7 +484,7 @@ nav a:focus-visible {
 }
 
 .project-card h3 {
-    color: var(--dark);
+    color: var(--text);
     margin-bottom: 15px;
     font-size: 1.5rem;
 }
@@ -630,6 +630,15 @@ nav a:focus-visible {
 
 .arch-tab-content.active {
     display: block;
+}
+
+/* Ensure text is readable in architecture tabs */
+.arch-tab-content h3,
+.arch-tab-content h4,
+.arch-tab-content strong,
+.arch-tab-content p,
+.arch-tab-content li {
+    color: var(--text);
 }
 
 /* Architecture Layers (Overview) */
@@ -826,6 +835,15 @@ nav a:focus-visible {
     display: block;
 }
 
+/* Ensure text is readable in tech stack boxes and similar containers */
+.tab-content h3,
+.tab-content h4,
+.tab-content strong,
+.tab-content p,
+.tab-content li {
+    color: var(--text);
+}
+
 /* Contact CTA */
 .cta-section {
     background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
@@ -867,7 +885,7 @@ nav a:focus-visible {
     text-align: center;
     font-size: 2.2rem;
     margin-bottom: 30px;
-    color: var(--dark);
+    color: var(--text);
 }
 
 .section-subtitle {
