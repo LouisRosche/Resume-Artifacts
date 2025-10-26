@@ -59,6 +59,12 @@
     box-sizing: border-box;
 }
 
+/* Full-page scroll snap - One section at a time */
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
@@ -77,6 +83,14 @@ h1, h2, h3, h4, h5, h6 {
 .tab-content,
 section {
     content-visibility: auto;
+}
+
+/* Scroll snap alignment for sections */
+section[id] {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+    padding: 60px 20px;
 }
 
 /* Skip to main content link - Accessibility critical */

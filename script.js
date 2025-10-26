@@ -3,6 +3,29 @@
  * Accessible tab component and project filtering with ARIA support
  */
 
+/**
+ * CRITICAL: Apply saved theme immediately on page load
+ * This runs before DOMContentLoaded to prevent flash of unstyled content
+ * Ensures dark mode persists across navigation (main portfolio → demo pages)
+ */
+(function() {
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    const savedColorblindMode = localStorage.getItem('colorblindMode') === 'true';
+    const html = document.documentElement;
+
+    // Remove any existing theme
+    html.removeAttribute('data-theme');
+
+    // Apply saved theme combination
+    if (savedDarkMode && savedColorblindMode) {
+        html.setAttribute('data-theme', 'colorblind-dark');
+    } else if (savedDarkMode) {
+        html.setAttribute('data-theme', 'dark');
+    } else if (savedColorblindMode) {
+        html.setAttribute('data-theme', 'colorblind');
+    }
+})();
+
 // Smooth scroll behavior for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
