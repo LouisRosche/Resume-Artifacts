@@ -28,7 +28,7 @@ body {
 /* Adjust for sidebar on desktop */
 @media (min-width: 769px) {
     body {
-        margin-left: 480px;
+        margin-left: 340px;
     }
 }
 

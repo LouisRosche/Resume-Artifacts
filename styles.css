@@ -99,12 +99,12 @@ section {
     outline-offset: 2px;
 }
 
-/* Sidebar Navigation - Full viewport height navigation (480px wide) */
+/* Sidebar Navigation - Full viewport height navigation (optimized width) */
 .sidebar-nav {
     position: fixed;
     left: 0;
     top: 0;
-    width: 480px;
+    width: 340px;
     height: 100vh;
     background: var(--bg);
     box-shadow: 2px 0 8px var(--shadow);
@@ -267,10 +267,10 @@ section {
     }
 }
 
-/* Adjust main content to account for sidebar on desktop (480px wide) */
+/* Adjust main content to account for sidebar on desktop (optimized width) */
 @media (min-width: 769px) {
     body {
-        margin-left: 480px;
+        margin-left: 340px;
     }
 }
 
