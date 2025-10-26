@@ -11,49 +11,12 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f8fafc;
-            padding: 20px;
-        }
-
-        @media (min-width: 769px) {
-            body {
-                margin-left: 340px;
-            }
-        }
-
-        .header {
-            background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
+        /* Demo-specific layout styles - colors handled by demo-enhancements.css */
         .controls {
-            background: white;
             padding: 25px;
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px var(--shadow);
         }
 
         .control-group {
@@ -71,13 +34,12 @@
         .control-item label {
             font-weight: 600;
             margin-bottom: 8px;
-            color: #334155;
         }
 
         .control-item select,
         .control-item input {
             padding: 10px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid var(--border);
             border-radius: 8px;
             font-size: 1rem;
             transition: border 0.3s;
@@ -86,7 +48,7 @@
         .control-item select:focus,
         .control-item input:focus {
             outline: none;
-            border-color: #2563eb;
+            border-color: var(--primary);
         }
 
         .slider-container {
@@ -101,7 +63,6 @@
 
         .slider-value {
             font-weight: 600;
-            color: #2563eb;
             min-width: 60px;
             text-align: right;
         }
@@ -147,15 +108,13 @@
         }
 
         .chart-container {
-            background: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px var(--shadow);
         }
 
         .chart-container h2 {
             margin-bottom: 20px;
-            color: #1e293b;
             font-size: 1.3rem;
         }
 
@@ -165,15 +124,13 @@
         }
 
         .student-list {
-            background: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px var(--shadow);
         }
 
         .student-list h2 {
             margin-bottom: 20px;
-            color: #1e293b;
         }
 
         .student-item {
@@ -181,12 +138,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border);
             transition: background 0.3s;
         }
 
         .student-item:hover {
-            background: #f8fafc;
+            background: var(--bg-secondary);
         }
 
         .student-info {
@@ -195,12 +152,11 @@
 
         .student-name {
             font-weight: 600;
-            color: #1e293b;
         }
 
         .student-meta {
             font-size: 0.85rem;
-            color: #64748b;
+            opacity: 0.7;
             margin-top: 5px;
         }
 
@@ -217,7 +173,7 @@
 
         .btn {
             padding: 12px 24px;
-            background: #2563eb;
+            background: var(--primary);
             color: white;
             border: none;
             border-radius: 8px;
@@ -227,25 +183,22 @@
         }
 
         .btn:hover {
-            background: #1d4ed8;
+            background: var(--accent);
             transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: #64748b;
+            background: var(--text);
+            opacity: 0.6;
         }
 
         .btn-secondary:hover {
-            background: #475569;
+            opacity: 0.8;
         }
 
         @media (max-width: 768px) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
             }
         }
     </style>
@@ -737,5 +690,32 @@
             });
         });
     </script>
+
+    <!-- Accessibility Toggle -->
+    <div class="accessibility-toggle">
+        <button class="accessibility-toggle-button" aria-label="Accessibility settings" aria-expanded="false" aria-controls="accessibility-panel">
+            ⚙️
+        </button>
+        <div class="accessibility-panel" id="accessibility-panel" role="region" aria-label="Accessibility settings">
+            <h3>Display Settings</h3>
+            <div class="accessibility-option">
+                <label>
+                    <input type="checkbox" id="dark-mode-toggle" aria-describedby="dark-mode-info">
+                    <span>Dark Mode</span>
+                </label>
+                <p class="accessibility-info" id="dark-mode-info">Reduces eye strain in low-light environments</p>
+            </div>
+            <div class="accessibility-option">
+                <label>
+                    <input type="checkbox" id="colorblind-mode-toggle" aria-describedby="colorblind-mode-info">
+                    <span>Colorblind-Safe Palette</span>
+                </label>
+                <p class="accessibility-info" id="colorblind-mode-info">Uses blue-orange colors safe for all colorblindness types</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="../script.js"></script>
 </body>
 </html>

@@ -11,15 +11,8 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
             padding: 20px;
             min-height: 100vh;
         }
@@ -36,21 +29,22 @@
         }
 
         .header {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .header h1 {
-            color: #1a202c;
+            color: var(--text);
             font-size: 2rem;
             margin-bottom: 10px;
         }
 
         .header p {
-            color: #4a5568;
+            color: var(--text);
+            opacity: 0.7;
             font-size: 1.1rem;
             line-height: 1.6;
         }
@@ -61,7 +55,7 @@
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
             text-align: center;
         }
 
@@ -83,10 +77,10 @@
         }
 
         .metric-card {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
             transition: transform 0.2s;
         }
 
@@ -102,7 +96,8 @@
         }
 
         .metric-label {
-            color: #718096;
+            color: var(--text);
+            opacity: 0.7;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -116,15 +111,15 @@
         }
 
         .eight-metrics {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .eight-metrics h2 {
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
@@ -143,7 +138,7 @@
         }
 
         .detailed-metric h4 {
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 8px;
             font-size: 1rem;
         }
@@ -156,7 +151,8 @@
         }
 
         .detailed-desc {
-            color: #718096;
+            color: var(--text);
+            opacity: 0.7;
             font-size: 0.85rem;
         }
 
@@ -168,14 +164,14 @@
         }
 
         .chart-card {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .chart-card h3 {
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 20px;
             font-size: 1.2rem;
         }
@@ -186,21 +182,21 @@
         }
 
         .student-profiles {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .student-profiles h2 {
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
 
         .profile-card {
-            background: #f7fafc;
+            background: var(--bg-secondary);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 15px;
@@ -221,7 +217,7 @@
         .profile-name {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #1a202c;
+            color: var(--text);
         }
 
         .profile-status {
@@ -249,23 +245,25 @@
 
         .profile-metric-item {
             font-size: 0.9rem;
-            color: #4a5568;
+            color: var(--text);
+            opacity: 0.7;
         }
 
         .profile-metric-item strong {
-            color: #1a202c;
+            color: var(--text);
+            opacity: 1;
         }
 
         .time-savings {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .time-savings h2 {
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
@@ -293,7 +291,8 @@
 
         .time-box h3 {
             font-size: 0.9rem;
-            color: #718096;
+            color: var(--text);
+            opacity: 0.7;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
@@ -301,7 +300,7 @@
         .time-box .time {
             font-size: 3rem;
             font-weight: bold;
-            color: #1a202c;
+            color: var(--text);
         }
 
         .arrow {
@@ -433,7 +432,7 @@
 
         <div class="eight-metrics">
             <h2>📋 Eight Critical Success Metrics I Track</h2>
-            <p style="color: #718096; margin-bottom: 20px;">I monitor these metrics weekly to identify early warning signs and ensure every foster care student receives the support they need for successful school transitions.</p>
+            <p style="opacity: 0.7; margin-bottom: 20px;">I monitor these metrics weekly to identify early warning signs and ensure every foster care student receives the support they need for successful school transitions.</p>
 
             <div class="metrics-grid-detailed">
                 <div class="detailed-metric">
@@ -488,7 +487,7 @@
 
         <div class="time-savings">
             <h2>⚡ Automated Reporting Efficiency</h2>
-            <p style="color: #718096; margin-bottom: 20px;">I built this automation to replace manual data compilation. Previously, I spent 3 days per report manually pulling data from multiple systems, creating spreadsheets, and generating individual student profiles.</p>
+            <p style="opacity: 0.7; margin-bottom: 20px;">I built this automation to replace manual data compilation. Previously, I spent 3 days per report manually pulling data from multiple systems, creating spreadsheets, and generating individual student profiles.</p>
 
             <div class="time-comparison">
                 <div class="time-box before">
@@ -541,7 +540,7 @@
 
         <div class="student-profiles">
             <h2>👥 Sample Student Profiles</h2>
-            <p style="color: #718096; margin-bottom: 20px;">I generate individualized profiles like these for all 62 students, updated weekly with automated data pulls from multiple sources.</p>
+            <p style="opacity: 0.7; margin-bottom: 20px;">I generate individualized profiles like these for all 62 students, updated weekly with automated data pulls from multiple sources.</p>
 
             <div class="profile-card">
                 <div class="profile-header">
@@ -730,5 +729,32 @@
             });
         });
     </script>
+
+    <!-- Accessibility Toggle -->
+    <div class="accessibility-toggle">
+        <button class="accessibility-toggle-button" aria-label="Accessibility settings" aria-expanded="false" aria-controls="accessibility-panel">
+            ⚙️
+        </button>
+        <div class="accessibility-panel" id="accessibility-panel" role="region" aria-label="Accessibility settings">
+            <h3>Display Settings</h3>
+            <div class="accessibility-option">
+                <label>
+                    <input type="checkbox" id="dark-mode-toggle" aria-describedby="dark-mode-info">
+                    <span>Dark Mode</span>
+                </label>
+                <p class="accessibility-info" id="dark-mode-info">Reduces eye strain in low-light environments</p>
+            </div>
+            <div class="accessibility-option">
+                <label>
+                    <input type="checkbox" id="colorblind-mode-toggle" aria-describedby="colorblind-mode-info">
+                    <span>Colorblind-Safe Palette</span>
+                </label>
+                <p class="accessibility-info" id="colorblind-mode-info">Uses blue-orange colors safe for all colorblindness types</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="../script.js"></script>
 </body>
 </html>

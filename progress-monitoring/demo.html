@@ -11,15 +11,8 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
             padding: 20px;
             min-height: 100vh;
         }
@@ -36,21 +29,22 @@
         }
 
         .header {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .header h1 {
-            color: #1a202c;
+            color: var(--text);
             font-size: 2rem;
             margin-bottom: 10px;
         }
 
         .header p {
-            color: #4a5568;
+            color: var(--text);
+            opacity: 0.7;
             font-size: 1.1rem;
             line-height: 1.6;
         }
@@ -63,10 +57,10 @@
         }
 
         .metric-card {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
             transition: transform 0.2s;
         }
 
@@ -77,12 +71,13 @@
         .metric-value {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #0ea5e9;
+            color: var(--primary);
             margin-bottom: 5px;
         }
 
         .metric-label {
-            color: #718096;
+            color: var(--text);
+            opacity: 0.7;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -103,14 +98,14 @@
         }
 
         .chart-card {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .chart-card h3 {
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 20px;
             font-size: 1.2rem;
         }
@@ -121,15 +116,15 @@
         }
 
         .student-list {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .student-list h2 {
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
@@ -140,22 +135,23 @@
         }
 
         .student-table th {
-            background: #f7fafc;
+            background: var(--bg-secondary);
             padding: 12px;
             text-align: left;
             font-weight: 600;
-            color: #4a5568;
-            border-bottom: 2px solid #e2e8f0;
+            color: var(--text);
+            opacity: 0.7;
+            border-bottom: 2px solid var(--border);
         }
 
         .student-table td {
             padding: 12px;
-            border-bottom: 1px solid #e2e8f0;
-            color: #1a202c;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
         }
 
         .student-table tr:hover {
-            background: #f7fafc;
+            background: var(--bg-secondary);
         }
 
         .tier-badge {
@@ -193,11 +189,11 @@
         }
 
         .controls {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
@@ -212,13 +208,14 @@
 
         .control-group label {
             font-size: 0.85rem;
-            color: #718096;
+            color: var(--text);
+            opacity: 0.7;
             font-weight: 600;
         }
 
         select, button {
             padding: 10px 15px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border);
             border-radius: 8px;
             font-size: 0.95rem;
             cursor: pointer;
@@ -237,15 +234,15 @@
         }
 
         .automation-info {
-            background: white;
+            background: var(--bg);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .automation-info h2 {
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
@@ -261,24 +258,25 @@
             background: linear-gradient(135deg, #f7fafc, #edf2f7);
             padding: 20px;
             border-radius: 10px;
-            border-left: 4px solid #0ea5e9;
+            border-left: 4px solid var(--primary);
         }
 
         .step-number {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #0ea5e9;
+            color: var(--primary);
             margin-bottom: 8px;
         }
 
         .step-title {
             font-weight: 600;
-            color: #1a202c;
+            color: var(--text);
             margin-bottom: 5px;
         }
 
         .step-desc {
-            color: #718096;
+            color: var(--text);
+            opacity: 0.7;
             font-size: 0.9rem;
         }
 
@@ -462,7 +460,7 @@
 
         <div class="student-list">
             <h2>🎯 Current Week Student Progress Summary</h2>
-            <p style="color: #718096; margin-bottom: 20px;">I generate this automated report every Monday morning at 6 AM, pulling data from multiple assessment sources and calculating progress metrics for each student.</p>
+            <p style="opacity: 0.7; margin-bottom: 20px;">I generate this automated report every Monday morning at 6 AM, pulling data from multiple assessment sources and calculating progress metrics for each student.</p>
 
             <table class="student-table" id="studentTable">
                 <thead>
@@ -485,7 +483,7 @@
 
         <div class="automation-info">
             <h2>⚙️ How This System Is Automated</h2>
-            <p style="color: #718096; margin-bottom: 15px;">This system uses SQLite with scheduled queries that run every Monday at 6 AM. The system pulls from multiple assessment databases, calculates progress metrics, and generates individualized reports automatically.</p>
+            <p style="opacity: 0.7; margin-bottom: 15px;">This system uses SQLite with scheduled queries that run every Monday at 6 AM. The system pulls from multiple assessment databases, calculates progress metrics, and generates individualized reports automatically.</p>
 
             <div class="automation-steps">
                 <div class="step-card">
@@ -713,5 +711,32 @@
             });
         });
     </script>
+
+    <!-- Accessibility Toggle -->
+    <div class="accessibility-toggle">
+        <button class="accessibility-toggle-button" aria-label="Accessibility settings" aria-expanded="false" aria-controls="accessibility-panel">
+            ⚙️
+        </button>
+        <div class="accessibility-panel" id="accessibility-panel" role="region" aria-label="Accessibility settings">
+            <h3>Display Settings</h3>
+            <div class="accessibility-option">
+                <label>
+                    <input type="checkbox" id="dark-mode-toggle" aria-describedby="dark-mode-info">
+                    <span>Dark Mode</span>
+                </label>
+                <p class="accessibility-info" id="dark-mode-info">Reduces eye strain in low-light environments</p>
+            </div>
+            <div class="accessibility-option">
+                <label>
+                    <input type="checkbox" id="colorblind-mode-toggle" aria-describedby="colorblind-mode-info">
+                    <span>Colorblind-Safe Palette</span>
+                </label>
+                <p class="accessibility-info" id="colorblind-mode-info">Uses blue-orange colors safe for all colorblindness types</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="../script.js"></script>
 </body>
 </html>

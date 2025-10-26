@@ -1,15 +1,16 @@
+/* Import main theme variables from parent */
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #10b981;
+    --primary-color: var(--primary, #2563eb);
+    --secondary-color: var(--secondary, #10b981);
     --danger-color: #ef4444;
     --warning-color: #f59e0b;
-    --background: #f9fafb;
-    --surface: #ffffff;
-    --text-primary: #111827;
-    --text-secondary: #6b7280;
-    --border: #e5e7eb;
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --background: var(--bg-secondary, #f9fafb);
+    --surface: var(--bg, #ffffff);
+    --text-primary: var(--text, #111827);
+    --text-secondary: var(--text, #6b7280);
+    --border-color: var(--border, #e5e7eb);
+    --shadow: 0 1px 3px 0 var(--shadow, rgba(0, 0, 0, 0.1));
+    --shadow-lg: 0 10px 15px -3px var(--shadow, rgba(0, 0, 0, 0.1));
 }
 
 * {
@@ -129,7 +130,7 @@ header h1 {
 
 input[type="search"] {
     padding: 10px 15px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 1rem;
     flex: 1;
@@ -143,7 +144,7 @@ input[type="search"] {
 }
 
 .circle-card {
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     transition: all 0.3s;
@@ -223,7 +224,7 @@ input[type="search"] {
 }
 
 .protocol-card {
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
 }
@@ -240,7 +241,7 @@ input[type="search"] {
 }
 
 .resource-card {
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
 }
