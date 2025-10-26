@@ -90,7 +90,7 @@ section[id] {
     scroll-snap-align: start;
     scroll-snap-stop: always;
     min-height: 100vh;
-    padding: 60px 20px;
+    /* Padding is defined by individual section classes (.hero, .container, etc.) */
 }
 
 /* Skip to main content link - Accessibility critical */
