@@ -1,30 +1,10 @@
 /**
  * Louis Rosche - Portfolio JavaScript
  * Accessible tab component and project filtering with ARIA support
+ *
+ * NOTE: Theme persistence is handled by inline <script> tags in each HTML file's <head>
+ * This ensures theme applies BEFORE page render to prevent flash of light mode
  */
-
-/**
- * CRITICAL: Apply saved theme immediately on page load
- * This runs before DOMContentLoaded to prevent flash of unstyled content
- * Ensures dark mode persists across navigation (main portfolio → demo pages)
- */
-(function() {
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    const savedColorblindMode = localStorage.getItem('colorblindMode') === 'true';
-    const html = document.documentElement;
-
-    // Remove any existing theme
-    html.removeAttribute('data-theme');
-
-    // Apply saved theme combination
-    if (savedDarkMode && savedColorblindMode) {
-        html.setAttribute('data-theme', 'colorblind-dark');
-    } else if (savedDarkMode) {
-        html.setAttribute('data-theme', 'dark');
-    } else if (savedColorblindMode) {
-        html.setAttribute('data-theme', 'colorblind');
-    }
-})();
 
 /**
  * CSS Variable Helper for Chart.js and Dynamic Styling
@@ -58,6 +38,41 @@ window.getThemeColors = function() {
         tier2Text: root.getPropertyValue('--tier-2-text').trim(),
         tier3Bg: root.getPropertyValue('--tier-3-bg').trim(),
         tier3Text: root.getPropertyValue('--tier-3-text').trim()
+    };
+};
+
+/**
+ * Chart.js Theme Helper
+ * Returns colorblind-safe color arrays for common chart patterns
+ */
+window.getChartColors = function() {
+    const colors = getThemeColors();
+    return {
+        // Tier colors (green/yellow/red or colorblind teal/orange/vermillion)
+        tiers: [colors.success, colors.warning, colors.danger],
+
+        // Binary success/failure
+        binary: [colors.success, colors.danger],
+
+        // Three-level scale
+        threeLevel: [colors.success, colors.warning, colors.danger],
+
+        // Four colors
+        fourLevel: [colors.primary, colors.success, colors.warning, colors.danger],
+
+        // Status colors
+        status: {
+            success: colors.success,
+            warning: colors.warning,
+            danger: colors.danger,
+            info: colors.info
+        },
+
+        // Line chart with transparent background
+        lineChart: {
+            borderColor: colors.primary,
+            backgroundColor: colors.primary + '20' // 20 = 12.5% opacity in hex
+        }
     };
 };
 
@@ -429,6 +444,7 @@ function initAccessibilityToggle() {
 /**
  * Apply theme based on selected options
  * Supports: light, dark, colorblind, dark+colorblind
+ * Dispatches custom event for charts to update their colors
  */
 function applyTheme() {
     const darkMode = document.getElementById('dark-mode-toggle')?.checked || false;
@@ -448,6 +464,11 @@ function applyTheme() {
         html.setAttribute('data-theme', 'colorblind');
     }
     // If neither is checked, use default light mode (no data-theme attribute)
+
+    // Dispatch custom event for charts and other dynamic elements to update
+    window.dispatchEvent(new CustomEvent('themeChanged', {
+        detail: { darkMode, colorblindMode }
+    }));
 }
 
 /**

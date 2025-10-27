@@ -483,6 +483,9 @@
         }
 
         function updateCharts() {
+            // Get theme-aware colors (automatically adapts to colorblind mode)
+            const chartColors = getChartColors();
+
             // Tier Distribution
             const tierCounts = {
                 'Tier 1': filteredStudents.filter(s => s.tier === 'Tier 1').length,
@@ -498,7 +501,7 @@
                     labels: Object.keys(tierCounts),
                     datasets: [{
                         data: Object.values(tierCounts),
-                        backgroundColor: ['#10b981', '#f59e0b', '#ef4444']
+                        backgroundColor: chartColors.tiers
                     }]
                 },
                 options: {
@@ -526,7 +529,7 @@
                     datasets: [{
                         label: 'Students',
                         data: Object.values(riskCounts),
-                        backgroundColor: ['#10b981', '#f59e0b', '#ef4444']
+                        backgroundColor: chartColors.tiers
                     }]
                 },
                 options: {
@@ -557,8 +560,8 @@
                     datasets: [{
                         label: 'Attendance %',
                         data: attendanceData,
-                        borderColor: '#2563eb',
-                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderColor: chartColors.lineChart.borderColor,
+                        backgroundColor: chartColors.lineChart.backgroundColor,
                         tension: 0.4,
                         fill: true
                     }]
@@ -682,6 +685,11 @@
 
         // Initialize dashboard
         updateDashboard();
+
+        // Listen for theme changes and update charts to use new colors
+        window.addEventListener('themeChanged', function() {
+            updateCharts();
+        });
 
         // Simulate real-time updates every 5 seconds
         setInterval(() => {
