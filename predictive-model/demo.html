@@ -684,6 +684,9 @@
         }
 
         function updateHistoryChart(currentRisk) {
+            // Get theme-aware colors (automatically adapts to colorblind mode)
+            const chartColors = getChartColors();
+
             const weeks = ['Week -8', 'Week -7', 'Week -6', 'Week -5', 'Week -4', 'Week -3', 'Week -2', 'Week -1', 'Current'];
             const baseRisk = currentRisk;
             const history = weeks.map((w, i) => {
@@ -703,22 +706,22 @@
                     datasets: [{
                         label: 'Risk Score',
                         data: history,
-                        borderColor: '#ef4444',
-                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderColor: chartColors.tiers[2],
+                        backgroundColor: chartColors.tiers[2] + '20',
                         tension: 0.4,
                         fill: true,
                         pointRadius: 5,
-                        pointBackgroundColor: '#ef4444'
+                        pointBackgroundColor: chartColors.tiers[2]
                     }, {
                         label: 'High Risk Threshold',
                         data: Array(weeks.length).fill(0.65),
-                        borderColor: '#f59e0b',
+                        borderColor: chartColors.tiers[1],
                         borderDash: [5, 5],
                         pointRadius: 0
                     }, {
                         label: 'Moderate Risk Threshold',
                         data: Array(weeks.length).fill(0.3),
-                        borderColor: '#10b981',
+                        borderColor: chartColors.tiers[0],
                         borderDash: [5, 5],
                         pointRadius: 0
                     }]
@@ -798,6 +801,9 @@
 
         // Initialize performance chart
         function initPerformanceChart() {
+            // Get theme-aware colors (automatically adapts to colorblind mode)
+            const chartColors = getChartColors();
+
             const ctx = document.getElementById('performanceChart').getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
@@ -806,15 +812,15 @@
                     datasets: [{
                         label: 'Accuracy',
                         data: [95.3, 94.1, 93.8, 94.7, 95.1],
-                        backgroundColor: '#10b981'
+                        backgroundColor: chartColors.tiers[0]
                     }, {
                         label: 'Precision',
                         data: [93.8, 92.4, 91.2, 93.1, 93.6],
-                        backgroundColor: '#2563eb'
+                        backgroundColor: chartColors.lineChart.borderColor
                     }, {
                         label: 'Recall',
                         data: [96.1, 95.8, 96.4, 95.2, 96.3],
-                        backgroundColor: '#f59e0b'
+                        backgroundColor: chartColors.tiers[1]
                     }]
                 },
                 options: {
@@ -855,6 +861,12 @@
         // Initialize
         updatePrediction();
         initPerformanceChart();
+
+        // Listen for theme changes and update charts to use new colors
+        window.addEventListener('themeChanged', function() {
+            updatePrediction();
+            initPerformanceChart();
+        });
     </script>
 
     <!-- Accessibility Toggle -->

@@ -452,15 +452,18 @@
     </div>
 
     <script>
+        // Get theme-aware colors (automatically adapts to colorblind mode)
+        const chartColors = getChartColors();
+
         // Data Source Distribution Chart
         const sourceCtx = document.getElementById('sourceChart').getContext('2d');
-        new Chart(sourceCtx, {
+        const sourceChart = new Chart(sourceCtx, {
             type: 'doughnut',
             data: {
                 labels: ['Salesforce (15 orgs)', 'Excel Sheets (18 orgs)', 'Google Sheets (12 orgs)'],
                 datasets: [{
                     data: [15, 18, 12],
-                    backgroundColor: ['#667eea', '#764ba2', '#f59e0b'],
+                    backgroundColor: [chartColors.lineChart.borderColor, chartColors.status.info, chartColors.tiers[1]],
                     borderWidth: 0
                 }]
             },
@@ -483,14 +486,14 @@
 
         // Time Comparison Chart
         const timeCtx = document.getElementById('timeChart').getContext('2d');
-        new Chart(timeCtx, {
+        const timeChart = new Chart(timeCtx, {
             type: 'bar',
             data: {
                 labels: ['Before ETL', 'After ETL'],
                 datasets: [{
                     label: 'Processing Time (hours/week)',
                     data: [40, 6],
-                    backgroundColor: ['#ef4444', '#10b981'],
+                    backgroundColor: chartColors.binary,
                     borderRadius: 8
                 }]
             },
@@ -516,15 +519,15 @@
 
         // Reliability Over Time Chart
         const reliabilityCtx = document.getElementById('reliabilityChart').getContext('2d');
-        new Chart(reliabilityCtx, {
+        const reliabilityChart = new Chart(reliabilityCtx, {
             type: 'line',
             data: {
                 labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6', 'Current'],
                 datasets: [{
                     label: 'Data Reliability %',
                     data: [71, 75, 82, 86, 89, 91, 93],
-                    borderColor: '#667eea',
-                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderColor: chartColors.lineChart.borderColor,
+                    backgroundColor: chartColors.lineChart.backgroundColor,
                     fill: true,
                     tension: 0.4,
                     pointRadius: 5,
@@ -555,14 +558,14 @@
 
         // Volume Chart
         const volumeCtx = document.getElementById('volumeChart').getContext('2d');
-        new Chart(volumeCtx, {
+        const volumeChart = new Chart(volumeCtx, {
             type: 'bar',
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
                     label: 'Records Processed',
                     data: [48500, 51200, 49800, 52400, 53100, 54200, 52800, 55600, 54300, 56100, 55400, 57200],
-                    backgroundColor: '#764ba2',
+                    backgroundColor: chartColors.status.info,
                     borderRadius: 6
                 }]
             },
@@ -597,6 +600,27 @@
                 });
             });
         });
+
+        // Function to update all charts with new theme colors
+        function updateAllCharts() {
+            const newColors = getChartColors();
+
+            sourceChart.data.datasets[0].backgroundColor = [newColors.lineChart.borderColor, newColors.status.info, newColors.tiers[1]];
+            sourceChart.update();
+
+            timeChart.data.datasets[0].backgroundColor = newColors.binary;
+            timeChart.update();
+
+            reliabilityChart.data.datasets[0].borderColor = newColors.lineChart.borderColor;
+            reliabilityChart.data.datasets[0].backgroundColor = newColors.lineChart.backgroundColor;
+            reliabilityChart.update();
+
+            volumeChart.data.datasets[0].backgroundColor = newColors.status.info;
+            volumeChart.update();
+        }
+
+        // Listen for theme changes and update charts to use new colors
+        window.addEventListener('themeChanged', updateAllCharts);
     </script>
 
     <!-- Accessibility Toggle -->

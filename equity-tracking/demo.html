@@ -611,17 +611,20 @@
     </div>
 
     <script>
+        // Get theme-aware colors (automatically adapts to colorblind mode)
+        const chartColors = getChartColors();
+
         // Success Rate Chart
         const successCtx = document.getElementById('successChart').getContext('2d');
-        new Chart(successCtx, {
+        const successChart = new Chart(successCtx, {
             type: 'line',
             data: {
                 labels: ['Year 1 Q1', 'Year 1 Q2', 'Year 1 Q3', 'Year 1 Q4', 'Year 2 Q1', 'Year 2 Q2', 'Year 2 Q3', 'Year 2 Q4'],
                 datasets: [{
                     label: 'Successful Transitions %',
                     data: [52, 58, 62, 68, 72, 76, 79, 82],
-                    borderColor: '#10b981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderColor: chartColors.tiers[0],
+                    backgroundColor: chartColors.tiers[0] + '20',
                     fill: true,
                     tension: 0.4,
                     pointRadius: 6,
@@ -652,16 +655,16 @@
 
         // 8 Metrics Chart
         const metricsCtx = document.getElementById('metricsChart').getContext('2d');
-        new Chart(metricsCtx, {
+        const metricsChart = new Chart(metricsCtx, {
             type: 'radar',
             data: {
                 labels: ['Attendance', 'Grades', 'Discipline', 'IEP', 'Credits', 'Graduation', 'Post-Sec', 'Activities'],
                 datasets: [{
                     label: 'Current Performance',
                     data: [88, 70, 78, 96, 92, 78, 65, 58],
-                    borderColor: '#ec4899',
-                    backgroundColor: 'rgba(236, 72, 153, 0.2)',
-                    pointBackgroundColor: '#ec4899',
+                    borderColor: chartColors.lineChart.borderColor,
+                    backgroundColor: chartColors.lineChart.backgroundColor,
+                    pointBackgroundColor: chartColors.lineChart.borderColor,
                     pointBorderColor: '#fff',
                     pointRadius: 5
                 }]
@@ -680,13 +683,13 @@
 
         // Support Distribution Chart
         const supportCtx = document.getElementById('supportChart').getContext('2d');
-        new Chart(supportCtx, {
+        const supportChart = new Chart(supportCtx, {
             type: 'doughnut',
             data: {
                 labels: ['Successful (45)', 'Monitoring (12)', 'Intensive Support (5)'],
                 datasets: [{
                     data: [45, 12, 5],
-                    backgroundColor: ['#10b981', '#f59e0b', '#ef4444'],
+                    backgroundColor: chartColors.tiers,
                     borderWidth: 0
                 }]
             },
@@ -703,14 +706,14 @@
 
         // Intervention Response Chart
         const interventionCtx = document.getElementById('interventionChart').getContext('2d');
-        new Chart(interventionCtx, {
+        const interventionChart = new Chart(interventionCtx, {
             type: 'bar',
             data: {
                 labels: ['Academic Support', 'Attendance', 'Behavioral', 'IEP Services', 'Credit Recovery', 'Counseling'],
                 datasets: [{
                     label: 'Response Rate %',
                     data: [87, 82, 76, 96, 84, 79],
-                    backgroundColor: '#8b5cf6',
+                    backgroundColor: chartColors.status.info,
                     borderRadius: 8
                 }]
             },
@@ -746,6 +749,29 @@
                 });
             });
         });
+
+        // Function to update all charts with new theme colors
+        function updateAllCharts() {
+            const newColors = getChartColors();
+
+            successChart.data.datasets[0].borderColor = newColors.tiers[0];
+            successChart.data.datasets[0].backgroundColor = newColors.tiers[0] + '20';
+            successChart.update();
+
+            metricsChart.data.datasets[0].borderColor = newColors.lineChart.borderColor;
+            metricsChart.data.datasets[0].backgroundColor = newColors.lineChart.backgroundColor;
+            metricsChart.data.datasets[0].pointBackgroundColor = newColors.lineChart.borderColor;
+            metricsChart.update();
+
+            supportChart.data.datasets[0].backgroundColor = newColors.tiers;
+            supportChart.update();
+
+            interventionChart.data.datasets[0].backgroundColor = newColors.status.info;
+            interventionChart.update();
+        }
+
+        // Listen for theme changes and update charts to use new colors
+        window.addEventListener('themeChanged', updateAllCharts);
     </script>
 
     <!-- Accessibility Toggle -->

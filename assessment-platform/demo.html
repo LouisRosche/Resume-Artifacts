@@ -705,9 +705,12 @@
     </div>
 
     <script>
+        // Get theme-aware colors (automatically adapts to colorblind mode)
+        const chartColors = getChartColors();
+
         // Academic Performance Chart
         const academicCtx = document.getElementById('academicChart').getContext('2d');
-        new Chart(academicCtx, {
+        const academicChart = new Chart(academicCtx, {
             type: 'line',
             data: {
                 labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
@@ -715,16 +718,16 @@
                     {
                         label: 'GPA',
                         data: [2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.6, 2.8],
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderColor: chartColors.lineChart.borderColor,
+                        backgroundColor: chartColors.lineChart.backgroundColor,
                         tension: 0.4,
                         fill: true
                     },
                     {
                         label: 'Attendance %',
                         data: [75, 78, 80, 82, 81, 83, 82, 88],
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderColor: chartColors.tiers[0],
+                        backgroundColor: chartColors.tiers[0] + '20',
                         tension: 0.4,
                         fill: true,
                         yAxisID: 'y1'
@@ -764,22 +767,22 @@
 
         // Domain Breakdown Chart
         const domainCtx = document.getElementById('domainChart').getContext('2d');
-        new Chart(domainCtx, {
+        const domainChart = new Chart(domainCtx, {
             type: 'radar',
             data: {
                 labels: ['Academic', 'Attendance', 'Behavior', 'Engagement', 'SEL', 'Home Support'],
                 datasets: [{
                     label: 'Current Week',
                     data: [70, 88, 80, 70, 75, 78],
-                    borderColor: '#f59e0b',
-                    backgroundColor: 'rgba(245, 158, 11, 0.2)',
-                    pointBackgroundColor: '#f59e0b'
+                    borderColor: chartColors.tiers[1],
+                    backgroundColor: chartColors.tiers[1] + '40',
+                    pointBackgroundColor: chartColors.tiers[1]
                 }, {
                     label: 'Previous Week',
                     data: [65, 82, 75, 60, 70, 65],
-                    borderColor: '#cbd5e1',
-                    backgroundColor: 'rgba(203, 213, 225, 0.2)',
-                    pointBackgroundColor: '#cbd5e1'
+                    borderColor: chartColors.status.info,
+                    backgroundColor: chartColors.status.info + '40',
+                    pointBackgroundColor: chartColors.status.info
                 }]
             },
             options: {
@@ -805,6 +808,28 @@
                 });
             });
         });
+
+        // Function to update all charts with new theme colors
+        function updateAllCharts() {
+            const newColors = getChartColors();
+
+            academicChart.data.datasets[0].borderColor = newColors.lineChart.borderColor;
+            academicChart.data.datasets[0].backgroundColor = newColors.lineChart.backgroundColor;
+            academicChart.data.datasets[1].borderColor = newColors.tiers[0];
+            academicChart.data.datasets[1].backgroundColor = newColors.tiers[0] + '20';
+            academicChart.update();
+
+            domainChart.data.datasets[0].borderColor = newColors.tiers[1];
+            domainChart.data.datasets[0].backgroundColor = newColors.tiers[1] + '40';
+            domainChart.data.datasets[0].pointBackgroundColor = newColors.tiers[1];
+            domainChart.data.datasets[1].borderColor = newColors.status.info;
+            domainChart.data.datasets[1].backgroundColor = newColors.status.info + '40';
+            domainChart.data.datasets[1].pointBackgroundColor = newColors.status.info;
+            domainChart.update();
+        }
+
+        // Listen for theme changes and update charts to use new colors
+        window.addEventListener('themeChanged', updateAllCharts);
     </script>
 
     <!-- Accessibility Toggle -->
