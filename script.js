@@ -26,6 +26,41 @@
     }
 })();
 
+/**
+ * CSS Variable Helper for Chart.js and Dynamic Styling
+ * Reads CSS variables from computed styles for use in JavaScript
+ * Essential for colorblind mode support in charts
+ */
+window.getThemeColors = function() {
+    const root = getComputedStyle(document.documentElement);
+    return {
+        // Primary theme colors
+        primary: root.getPropertyValue('--primary').trim(),
+        secondary: root.getPropertyValue('--secondary').trim(),
+        accent: root.getPropertyValue('--accent').trim(),
+
+        // Semantic status colors
+        success: root.getPropertyValue('--success').trim(),
+        warning: root.getPropertyValue('--warning').trim(),
+        danger: root.getPropertyValue('--danger').trim(),
+        info: root.getPropertyValue('--info').trim(),
+
+        // Background and text
+        bg: root.getPropertyValue('--bg').trim(),
+        bgSecondary: root.getPropertyValue('--bg-secondary').trim(),
+        text: root.getPropertyValue('--text').trim(),
+        border: root.getPropertyValue('--border').trim(),
+
+        // MTSS Tier colors (for tier-based visualizations)
+        tier1Bg: root.getPropertyValue('--tier-1-bg').trim(),
+        tier1Text: root.getPropertyValue('--tier-1-text').trim(),
+        tier2Bg: root.getPropertyValue('--tier-2-bg').trim(),
+        tier2Text: root.getPropertyValue('--tier-2-text').trim(),
+        tier3Bg: root.getPropertyValue('--tier-3-bg').trim(),
+        tier3Text: root.getPropertyValue('--tier-3-text').trim()
+    };
+};
+
 // Smooth scroll behavior for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
