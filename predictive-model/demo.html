@@ -6,6 +6,24 @@
     <title>Student Risk Prediction Model - Interactive Demo | Louis Rosche</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../demo-enhancements.css">
+
+    <!-- CRITICAL: Apply saved theme IMMEDIATELY to prevent flash of light mode -->
+    <script>
+        (function() {
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            const savedColorblindMode = localStorage.getItem('colorblindMode') === 'true';
+            const html = document.documentElement;
+
+            if (savedDarkMode && savedColorblindMode) {
+                html.setAttribute('data-theme', 'colorblind-dark');
+            } else if (savedDarkMode) {
+                html.setAttribute('data-theme', 'dark');
+            } else if (savedColorblindMode) {
+                html.setAttribute('data-theme', 'colorblind');
+            }
+        })();
+    </script>
+
     <!-- Resource Hints for Performance (Core Web Vitals optimization) -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>

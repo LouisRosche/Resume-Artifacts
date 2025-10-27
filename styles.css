@@ -18,6 +18,20 @@
     --bg-secondary: #f8fafc;
     --border: #e2e8f0;
     --shadow: rgba(0, 0, 0, 0.1);
+
+    /* Semantic colors for status/alerts */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #3b82f6;
+
+    /* MTSS Tier colors (green/yellow/red) */
+    --tier-1-bg: #d1fae5;
+    --tier-1-text: #065f46;
+    --tier-2-bg: #fef3c7;
+    --tier-2-text: #92400e;
+    --tier-3-bg: #fee2e2;
+    --tier-3-text: #991b1b;
 }
 
 /* Dark mode */
@@ -32,14 +46,42 @@
     --bg-secondary: #1e293b;
     --border: #334155;
     --shadow: rgba(0, 0, 0, 0.5);
+
+    /* Semantic colors for status/alerts (brighter in dark mode) */
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --info: #60a5fa;
+
+    /* MTSS Tier colors (adjusted for dark mode) */
+    --tier-1-bg: #064e3b;
+    --tier-1-text: #d1fae5;
+    --tier-2-bg: #78350f;
+    --tier-2-text: #fef3c7;
+    --tier-3-bg: #7f1d1d;
+    --tier-3-text: #fee2e2;
 }
 
 /* Colorblind-safe mode (deuteranopia, protanopia, tritanopia safe) */
 [data-theme="colorblind"],
 [data-theme="colorblind-dark"] {
-    --primary: #0173B2;
-    --secondary: #DE8F05;
-    --accent: #029E73;
+    --primary: #0173B2;      /* Blue */
+    --secondary: #DE8F05;    /* Orange */
+    --accent: #029E73;       /* Teal/Green */
+
+    /* Semantic colors using Wong colorblind-safe palette */
+    --success: #029E73;      /* Teal (safe for all types) */
+    --warning: #DE8F05;      /* Orange */
+    --danger: #D55E00;       /* Vermillion/Red-orange */
+    --info: #56B4E9;         /* Sky blue */
+
+    /* MTSS Tier colors (colorblind-safe using Wong palette) */
+    --tier-1-bg: #E0F2F1;    /* Light teal background */
+    --tier-1-text: #004D40;  /* Dark teal text */
+    --tier-2-bg: #FFF3E0;    /* Light orange background */
+    --tier-2-text: #E65100;  /* Dark orange text */
+    --tier-3-bg: #FFE4E1;    /* Light vermillion background */
+    --tier-3-text: #B71C1C;  /* Dark red text */
 }
 
 /* Dark + colorblind mode */
