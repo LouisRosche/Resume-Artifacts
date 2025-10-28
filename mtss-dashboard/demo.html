@@ -293,7 +293,7 @@
     </div>
 
     <div class="controls">
-        <h2 style="margin-bottom: 20px; color: #1e293b;">Dashboard Controls</h2>
+        <h2 style="margin-bottom: 20px;">Dashboard Controls</h2>
 
         <div class="control-group">
             <div class="control-item">
@@ -646,7 +646,7 @@
             `).join('');
 
             container.innerHTML = html + (filteredStudents.length > 20 ?
-                `<div style="text-align: center; padding: 20px; color: #64748b;">
+                `<div style="text-align: center; padding: 20px; opacity: 0.7;">
                     Showing 20 of ${filteredStudents.length} students
                 </div>` : '');
         }
