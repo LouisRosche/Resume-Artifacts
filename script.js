@@ -388,6 +388,7 @@ function initSidebarScrolling() {
 /**
  * Accessibility Toggle System
  * Handles dark mode and colorblind-safe themes with localStorage persistence
+ * FIXED: Properly syncs with inline theme script on page load
  */
 function initAccessibilityToggle() {
     const toggleButton = document.querySelector('.accessibility-toggle-button');
@@ -397,18 +398,22 @@ function initAccessibilityToggle() {
 
     if (!toggleButton || !panel) return;
 
-    // Load saved preferences from localStorage
+    // CRITICAL: Read from BOTH localStorage AND current theme attribute
+    // This ensures we sync with the inline script that already set the theme
     const savedDarkMode = localStorage.getItem('darkMode') === 'true';
     const savedColorblindMode = localStorage.getItem('colorblindMode') === 'true';
+    const currentTheme = document.documentElement.getAttribute('data-theme');
 
-    // Apply saved preferences
-    if (savedDarkMode && darkModeCheckbox) {
-        darkModeCheckbox.checked = true;
+    // Set checkboxes to match CURRENT theme state (which inline script already set)
+    if (darkModeCheckbox) {
+        darkModeCheckbox.checked = savedDarkMode || currentTheme === 'dark' || currentTheme === 'colorblind-dark';
     }
-    if (savedColorblindMode && colorblindModeCheckbox) {
-        colorblindModeCheckbox.checked = true;
+    if (colorblindModeCheckbox) {
+        colorblindModeCheckbox.checked = savedColorblindMode || currentTheme === 'colorblind' || currentTheme === 'colorblind-dark';
     }
-    applyTheme();
+
+    // DON'T call applyTheme() here - the inline script already applied it!
+    // Only call it when user actually changes the settings
 
     // Toggle panel visibility
     toggleButton.addEventListener('click', function() {
@@ -428,7 +433,7 @@ function initAccessibilityToggle() {
     if (darkModeCheckbox) {
         darkModeCheckbox.addEventListener('change', function() {
             localStorage.setItem('darkMode', this.checked);
-            applyTheme();
+            applyTheme(); // NOW we apply theme on change
         });
     }
 
@@ -436,7 +441,7 @@ function initAccessibilityToggle() {
     if (colorblindModeCheckbox) {
         colorblindModeCheckbox.addEventListener('change', function() {
             localStorage.setItem('colorblindMode', this.checked);
-            applyTheme();
+            applyTheme(); // NOW we apply theme on change
         });
     }
 }
@@ -445,6 +450,7 @@ function initAccessibilityToggle() {
  * Apply theme based on selected options
  * Supports: light, dark, colorblind, dark+colorblind
  * Dispatches custom event for charts to update their colors
+ * IMPROVED: Only updates theme if it actually changed
  */
 function applyTheme() {
     const darkMode = document.getElementById('dark-mode-toggle')?.checked || false;
@@ -452,23 +458,31 @@ function applyTheme() {
 
     const html = document.documentElement;
 
-    // Remove all theme attributes first
-    html.removeAttribute('data-theme');
-
-    // Apply theme based on combination
+    // Determine what theme should be applied
+    let newTheme = '';
     if (darkMode && colorblindMode) {
-        html.setAttribute('data-theme', 'colorblind-dark');
+        newTheme = 'colorblind-dark';
     } else if (darkMode) {
-        html.setAttribute('data-theme', 'dark');
+        newTheme = 'dark';
     } else if (colorblindMode) {
-        html.setAttribute('data-theme', 'colorblind');
+        newTheme = 'colorblind';
     }
-    // If neither is checked, use default light mode (no data-theme attribute)
+    // If neither is checked, use default light mode (empty string = no attribute)
 
-    // Dispatch custom event for charts and other dynamic elements to update
-    window.dispatchEvent(new CustomEvent('themeChanged', {
-        detail: { darkMode, colorblindMode }
-    }));
+    // Only update if theme actually changed
+    const currentTheme = html.getAttribute('data-theme') || '';
+    if (currentTheme !== newTheme) {
+        if (newTheme === '') {
+            html.removeAttribute('data-theme');
+        } else {
+            html.setAttribute('data-theme', newTheme);
+        }
+
+        // Dispatch custom event for charts and other dynamic elements to update
+        window.dispatchEvent(new CustomEvent('themeChanged', {
+            detail: { darkMode, colorblindMode, theme: newTheme }
+        }));
+    }
 }
 
 /**
