@@ -65,8 +65,8 @@
 /* Colorblind-safe mode (deuteranopia, protanopia, tritanopia safe) */
 [data-theme="colorblind"],
 [data-theme="colorblind-dark"] {
-    --primary: #0173B2;      /* Blue */
-    --secondary: #DE8F05;    /* Orange */
+    --primary: #DE8F05;      /* Orange - HIGHLY visible change from blue! */
+    --secondary: #0173B2;    /* Blue */
     --accent: #029E73;       /* Teal/Green */
 
     /* Semantic colors using Wong colorblind-safe palette */
