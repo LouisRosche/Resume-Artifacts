@@ -314,7 +314,7 @@
             </div>
 
             <div class="metric-card">
-                <div class="metric-value">2,437</div>
+                <div class="metric-value">2,400+</div>
                 <div class="metric-label">Inconsistencies Identified</div>
                 <div class="metric-change">Automated detection & resolution</div>
             </div>
@@ -402,7 +402,7 @@
                 <div class="timeline-icon">1</div>
                 <div class="timeline-content">
                     <h4>Initial Assessment (Week 1-2)</h4>
-                    <p>I audited all 45 partner organizations and discovered 5 distinct data source types: Salesforce (15 orgs), Excel spreadsheets (18 orgs), Google Sheets (12 orgs), and manual entry systems. Processing time was 40 hours weekly with 71% data reliability.</p>
+                    <p>I integrated 45 partner organizations across 5 data source types: Salesforce (15 orgs), Excel spreadsheets (12 orgs), Google Sheets (8 orgs), Microsoft Forms (6 orgs), and SurveyMonkey (4 orgs). Processing time was 40 hours weekly with 71% data reliability.</p>
                 </div>
             </div>
 
@@ -418,7 +418,7 @@
                 <div class="timeline-icon">3</div>
                 <div class="timeline-content">
                     <h4>Initial Deployment (Week 5-8)</h4>
-                    <p>I deployed the ETL pipeline with nightly automated runs. Initial results showed 2,437 data quality issues across all organizations. Processing time reduced to 12 hours weekly. Data reliability improved to 82%.</p>
+                    <p>I deployed the ETL pipeline with nightly automated runs. Initial results showed 2,400+ data quality issues across all organizations. Processing time reduced to 12 hours weekly. Data reliability improved to 82%.</p>
                 </div>
             </div>
 
@@ -446,10 +446,10 @@
         new Chart(sourceCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Salesforce (15 orgs)', 'Excel Sheets (18 orgs)', 'Google Sheets (12 orgs)'],
+                labels: ['Salesforce (15 orgs)', 'Excel (12 orgs)', 'Google Sheets (8 orgs)', 'Microsoft Forms (6 orgs)', 'SurveyMonkey (4 orgs)'],
                 datasets: [{
-                    data: [15, 18, 12],
-                    backgroundColor: ['#667eea', '#764ba2', '#f59e0b'],
+                    data: [15, 12, 8, 6, 4],
+                    backgroundColor: ['#667eea', '#764ba2', '#f59e0b', '#10b981', '#ec4899'],
                     borderWidth: 0
                 }]
             },
