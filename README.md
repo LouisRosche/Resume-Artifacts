@@ -4,7 +4,13 @@ This repository contains complete implementations of all major projects and tool
 
 ## 📊 Overview
 
-Educational data analyst and science department lead with 9+ years of experience developing Python-based machine learning models, SQL database systems, and educational technology platforms that deliver measurable outcomes.
+8th Grade Team Leader & Science Teacher with 9+ years of educational experience and 3+ years of technical expertise in Python-based machine learning, SQL database systems, and educational technology platforms that deliver measurable outcomes.
+
+**Current Role (2025-Present):**
+- **8th Grade Team Leader & Science Teacher** at Kairos Academies, St. Louis, MO
+- Designing NGSS curriculum for 450+ students (grades 6-8)
+- Implementing standards-based grading across 5-teacher science team
+- Leading professional development for 25+ teachers
 
 **Contact Information:**
 - Email: louis.rosche@gmail.com
@@ -16,9 +22,11 @@ Educational data analyst and science department lead with 9+ years of experience
 
 - **95%+ accuracy** predictive intervention models
 - **65% improvement** in crisis response time (48 hours → 8 hours)
-- **30% increase** in successful student transitions
+- **30% increase** in successful student transitions (52% → 82%)
 - **47% improvement** in mentoring program effectiveness
-- **500+ students** served across multiple intervention systems
+- **450+ students** currently served across intervention systems
+- **82% proficiency** in 7th grade life science (12% above district average at Lindbergh)
+- **15,000+ children** impacted through nonprofit data integration work
 
 ## 📁 Repository Structure
 
@@ -393,6 +401,61 @@ system.export_weekly_reports()
 
 5. **Program Effectiveness**: Improved mentoring program outcomes by 47% through data-driven approach
 
+## 💼 Career Timeline
+
+### Current & Recent Positions
+
+**8th Grade Team Leader & Science Teacher** | Kairos Academies, St. Louis, MO
+*August 2025 – Present*
+- Designing three-year NGSS curriculum roadmap for grades 6-8 (450+ students)
+- Implementing standards-based grading system across 5-teacher science team
+- Leading professional development workshops for 25+ teachers (34% improvement in data literacy)
+- Building real-time MTSS tracking dashboard (12 hours weekly time savings)
+- Created restorative justice platform for 30+ staff facilitators (120+ annual circle sessions)
+
+**Science Teacher & MTSS Coordinator** | Lindbergh School District, St. Louis, MO
+*August 2024 – June 2025*
+- Taught 7th grade life science (125 students, 5 class periods)
+- Achieved 82% proficiency on district assessments (12% above district average)
+- Coordinated MTSS implementation for 200+ students across three grade levels
+- Developed automated progress monitoring system using SQL queries on PowerSchool database
+- Generated weekly intervention reports for 60+ Tier 2/3 students (eliminated 8 hours of manual work weekly)
+
+**Education Specialist** | Missouri Department of Social Services, St. Louis, MO
+*December 2023 – July 2024*
+- Managed educational planning for 60+ students in foster care across 12 school districts
+- Increased successful school transitions by 30% (52% → 82%) through systematic 6-week protocol
+- Designed equity-focused tracking system monitoring 8 key educational metrics
+- Reduced reporting time by 87% (3 days → 4 hours)
+
+**Research & Data Specialist** | United 4 Children, St. Louis, MO (Contract)
+*August 2023 – September 2023*
+- Integrated data management infrastructure for 45 nonprofit organizations serving 15,000+ children
+- Improved metric reliability by 22% (71% → 93% accuracy) through automated data validation
+- Built ETL pipeline using Python (pandas, SQLAlchemy) to centralize data from 5 disparate systems
+- Reduced report generation time by 85% (40 hours → 6 hours)
+
+**Director of Mentoring** | Kairos Academies, St. Louis, MO
+*June 2022 – June 2023*
+- Increased mentoring program effectiveness by 47% across 450+ students and 50+ staff mentors
+- Developed 95%+ accurate predictive model using Python (scikit-learn, XGBoost) processing 14 risk indicators
+- Reduced crisis response time by 65% (48 hours → 8 hours) through automated alert system
+- Created assessment platform processing 1,000+ weekly data points from 5 sources
+
+### Earlier Teaching Positions
+
+**Lead Teacher** | Momentum Academy, St. Louis, MO | *July 2020 – June 2022*
+- Taught 3rd grade (25 students, 2-year looping cohort)
+- Achieved 16% improvement in MAP growth scores (45th → 61st percentile)
+
+**English Teacher** | St. Louis Public Schools, St. Louis, MO | *August 2019 – June 2020*
+- Taught 4th grade ELA (120 students, 4 class periods)
+- 20% improvement in reading proficiency (58% → 78% at grade level)
+
+**Looping Teacher** | Aberdeen School District No. 5, Aberdeen, WA | *August 2016 – June 2019*
+- Taught 2nd-3rd grade loop (22-student cohort, 2-year cycle)
+- 31% improvement in student outcomes (composite of reading, math, SEL)
+
 ## 📚 Professional Certifications
 
 - **Google Advanced Data Analytics Professional Certificate** (2023)
@@ -402,14 +465,16 @@ system.export_weekly_reports()
 
 - **Professional Certificate in Leadership and Communication** - Harvard University (2023)
 
-- **Missouri Teaching License** - Elementary Education 1-6 & General Science 5-9 (2020-2029)
+- **Missouri Teaching License** - Elementary Education 1-6 & General Science 5-9 (Valid 2020-2029)
 
 - **Certified Health Education Specialist (CHES)** (2014)
 
+- **Certified Community Mediator** - Thurston County Dispute Resolution Center (2012)
+
 ## 📝 Education
 
-- **Master of Arts in Education**, Cum Laude - Truman State University (2015)
-- **Bachelor of Science in Health Science**, Cum Laude - Truman State University (2014)
+- **Master of Arts in Education, Cum Laude** - Truman State University (2015)
+- **Bachelor of Science in Health Science, Cum Laude** - Truman State University (2014)
 
 ## 🔧 Technical Skills
 
@@ -444,20 +509,13 @@ This repository is for portfolio demonstration purposes. Individual components m
 
 ## 🙏 Acknowledgments
 
-These artifacts represent work done across multiple educational institutions:
-- Kairos Academies, St. Louis, MO
-- Lindbergh School District, St. Louis, MO
-- Missouri Department of Social Services
-- United 4 Children (Contract)
-- Momentum Academy, St. Louis, MO
-- St. Louis Public Schools
-- Aberdeen School District No. 5, WA
+These artifacts represent work done across multiple educational institutions and organizations from 2016-Present. See the Career Timeline section above for detailed information about each role and organization.
 
 ## 🔄 Updates
 
 This repository is actively maintained and updated with new projects and improvements.
 
-Last Updated: October 2024
+Last Updated: November 2025
 
 ---
 
