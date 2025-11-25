@@ -139,7 +139,7 @@ function createCircleCard(circle) {
             <span>👤 ${circle.facilitator}</span>
             <span>👥 ${circle.participants} participants</span>
         </div>
-        <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.9rem;">
+        <p style="margin-top: 10px; color: var(--text-muted); font-size: 0.9rem;">
             ${circle.notes}
         </p>
     `;
@@ -214,7 +214,7 @@ async function loadProtocols() {
         protocolCard.innerHTML = `
             <h3>${protocol.title}</h3>
             <p>${protocol.description}</p>
-            <a href="${protocol.file}" style="color: var(--primary-color); text-decoration: none;">
+            <a href="${protocol.file}" style="color: var(--primary); text-decoration: none;">
                 View Protocol →
             </a>
         `;
