@@ -1,8 +1,267 @@
 /*
  * Demo Page Enhancements
- * Wide-screen optimizations and theme support for all demo pages
+ * Wide-screen optimizations and comprehensive theme support for all demo pages
  * Linked from all demo.html files for consistent UX
+ * Overrides hardcoded colors to ensure dark mode compatibility
  */
+
+/* ===================================
+   THEME OVERRIDES FOR DEMO PAGES
+   These rules ensure dark mode works
+   even when inline styles use hardcoded colors
+   =================================== */
+
+/* Body base styles - override any hardcoded backgrounds */
+body {
+    background: var(--bg-secondary) !important;
+    color: var(--text) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header styling */
+.header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    transition: background 0.3s ease;
+}
+
+.header h1,
+.header p,
+.header .subtitle {
+    color: white !important;
+}
+
+/* Control panels and cards */
+.controls,
+.input-panel,
+.output-panel,
+.prediction-panel,
+.results-panel,
+.chart-container,
+.student-list,
+.card {
+    background: var(--bg) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text) !important;
+    box-shadow: 0 2px 10px var(--shadow) !important;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* All headings in demo pages */
+h1, h2, h3, h4, h5, h6,
+.input-panel h2,
+.input-panel h3,
+.output-panel h2,
+.output-panel h3,
+.prediction-panel h2,
+.prediction-panel h3,
+.chart-container h2,
+.chart-container h3,
+.student-list h2,
+.card h2,
+.card h3 {
+    color: var(--text) !important;
+}
+
+/* Labels and text */
+label,
+.control-item label,
+.slider-label,
+.metric-label,
+.input-group label {
+    color: var(--text) !important;
+}
+
+.slider-value {
+    color: var(--primary) !important;
+}
+
+/* Muted/secondary text */
+.student-meta,
+.time-to-crisis,
+.feature-label span:first-child {
+    color: var(--text-muted) !important;
+}
+
+/* Student list items */
+.student-item {
+    border-bottom: 1px solid var(--border) !important;
+    transition: background 0.3s ease;
+}
+
+.student-item:hover {
+    background: var(--bg-secondary) !important;
+}
+
+.student-name {
+    color: var(--text) !important;
+}
+
+/* Input elements theme support */
+input[type="range"] {
+    accent-color: var(--primary);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: var(--border);
+}
+
+select,
+input[type="text"],
+input[type="search"],
+input[type="number"],
+textarea {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    border: 2px solid var(--border) !important;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    border-color: var(--primary) !important;
+    outline: none;
+}
+
+/* Tier badges - use semantic colors */
+.tier-badge,
+.tier-1,
+.tier-2,
+.tier-3 {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.tier-1 {
+    background: var(--success-bg) !important;
+    color: var(--success-text) !important;
+}
+
+.tier-2 {
+    background: var(--warning-bg) !important;
+    color: var(--warning-text) !important;
+}
+
+.tier-3 {
+    background: var(--danger-bg) !important;
+    color: var(--danger-text) !important;
+}
+
+/* Status badges */
+.status-scheduled {
+    background: var(--info-bg) !important;
+    color: var(--info-text) !important;
+}
+
+.status-active {
+    background: var(--success-bg) !important;
+    color: var(--success-text) !important;
+}
+
+.status-completed {
+    background: var(--bg-tertiary) !important;
+    color: var(--text) !important;
+}
+
+/* Risk level colors */
+.risk-low {
+    color: var(--success) !important;
+}
+
+.risk-moderate {
+    color: var(--warning) !important;
+}
+
+.risk-high {
+    color: var(--danger) !important;
+}
+
+/* Risk score container */
+.risk-score-container {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    color: var(--text) !important;
+}
+
+/* Recommendations box */
+.recommendations {
+    background: var(--warning-bg) !important;
+    border-left: 4px solid var(--warning) !important;
+}
+
+.recommendations h3 {
+    color: var(--warning-text) !important;
+}
+
+.recommendations li {
+    color: var(--warning-text) !important;
+}
+
+/* Feature importance bars */
+.feature-progress {
+    background: var(--bg-tertiary) !important;
+}
+
+.feature-fill {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
+}
+
+.feature-label {
+    color: var(--text) !important;
+}
+
+/* Metric cards with gradients - these keep their colors but text needs to stay white */
+.metric-card {
+    color: white !important;
+}
+
+.metric-card h3,
+.metric-card .value,
+.metric-card .change {
+    color: white !important;
+}
+
+/* Performance metric boxes - use CSS variables */
+[style*="background: #f0fdf4"],
+[style*="background:#f0fdf4"] {
+    background: var(--metric-bg-green) !important;
+}
+
+[style*="background: #eff6ff"],
+[style*="background:#eff6ff"] {
+    background: var(--metric-bg-blue) !important;
+}
+
+[style*="background: #fef3c7"],
+[style*="background:#fef3c7"] {
+    background: var(--metric-bg-yellow) !important;
+}
+
+[style*="background: #fae8ff"],
+[style*="background:#fae8ff"] {
+    background: var(--metric-bg-purple) !important;
+}
+
+/* Button theming */
+.btn,
+button {
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-secondary {
+    background: var(--text-muted) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--text) !important;
+}
+
+/* Progress bars */
+.progress-bar,
+.feature-progress {
+    background: var(--bg-tertiary) !important;
+}
+
+/* ===================================
+   WIDE-SCREEN OPTIMIZATIONS
+   =================================== */
 
 /* Wide-screen optimization (1600px+) */
 @media (min-width: 1600px) {
@@ -42,67 +301,6 @@
     }
 }
 
-/* Theme support for demo pages */
-/* Ensure body uses theme background */
-body {
-    background: var(--bg-secondary) !important;
-    color: var(--text) !important;
-}
-
-.header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    transition: background 0.3s ease;
-}
-
-.input-panel,
-.output-panel,
-.prediction-panel,
-.card {
-    background: var(--bg) !important;
-    border: 1px solid var(--border);
-    color: var(--text);
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-/* Ensure all headings in demo pages use proper theme colors */
-.input-panel h2,
-.input-panel h3,
-.output-panel h2,
-.output-panel h3,
-.prediction-panel h2,
-.prediction-panel h3,
-.card h2,
-.card h3,
-h2,
-h3,
-h4 {
-    color: var(--text) !important;
-}
-
-.slider-label,
-.metric-label,
-label {
-    color: var(--text) !important;
-}
-
-.slider-value {
-    color: var(--primary) !important;
-}
-
-/* Input elements theme support */
-input[type="range"] {
-    accent-color: var(--primary);
-}
-
-select,
-input[type="text"],
-input[type="search"],
-textarea {
-    background: var(--bg) !important;
-    color: var(--text) !important;
-    border: 1px solid var(--border) !important;
-}
-
 /* Grid layouts for controls sections */
 @media (min-width: 1400px) {
     .controls {
@@ -132,24 +330,88 @@ canvas {
     height: auto !important;
 }
 
-/* Button theming */
-button,
-.btn,
-.btn-primary {
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-/* Ensure proper contrast in dark mode */
-[data-theme="dark"] .header h1,
-[data-theme="dark"] .header p,
-[data-theme="colorblind-dark"] .header h1,
-[data-theme="colorblind-dark"] .header p {
-    color: white;
-}
-
 /* Mobile: Keep single column */
 @media (max-width: 768px) {
     .two-column {
         grid-template-columns: 1fr !important;
     }
+}
+
+/* ===================================
+   DARK MODE SPECIFIC OVERRIDES
+   Ensure all text is readable in dark mode
+   =================================== */
+
+[data-theme="dark"] .header h1,
+[data-theme="dark"] .header p,
+[data-theme="colorblind-dark"] .header h1,
+[data-theme="colorblind-dark"] .header p {
+    color: white !important;
+}
+
+/* Dark mode hover states */
+[data-theme="dark"] .student-item:hover,
+[data-theme="colorblind-dark"] .student-item:hover {
+    background: var(--bg-tertiary) !important;
+}
+
+/* Ensure inline style divs also respect theme */
+[data-theme="dark"] [style*="color: #1e293b"],
+[data-theme="dark"] [style*="color:#1e293b"],
+[data-theme="dark"] [style*="color: #334155"],
+[data-theme="dark"] [style*="color:#334155"],
+[data-theme="dark"] [style*="color: #64748b"],
+[data-theme="dark"] [style*="color:#64748b"] {
+    color: var(--text) !important;
+}
+
+[data-theme="colorblind-dark"] [style*="color: #1e293b"],
+[data-theme="colorblind-dark"] [style*="color:#1e293b"],
+[data-theme="colorblind-dark"] [style*="color: #334155"],
+[data-theme="colorblind-dark"] [style*="color:#334155"],
+[data-theme="colorblind-dark"] [style*="color: #64748b"],
+[data-theme="colorblind-dark"] [style*="color:#64748b"] {
+    color: var(--text) !important;
+}
+
+/* Performance metrics text in dark mode */
+[data-theme="dark"] [style*="color: #064e3b"],
+[data-theme="dark"] [style*="color:#064e3b"] {
+    color: var(--metric-text-green) !important;
+}
+
+[data-theme="dark"] [style*="color: #1e3a8a"],
+[data-theme="dark"] [style*="color:#1e3a8a"] {
+    color: var(--metric-text-blue) !important;
+}
+
+[data-theme="dark"] [style*="color: #78350f"],
+[data-theme="dark"] [style*="color:#78350f"] {
+    color: var(--metric-text-yellow) !important;
+}
+
+[data-theme="dark"] [style*="color: #581c87"],
+[data-theme="dark"] [style*="color:#581c87"] {
+    color: var(--metric-text-purple) !important;
+}
+
+/* Same for colorblind-dark */
+[data-theme="colorblind-dark"] [style*="color: #064e3b"],
+[data-theme="colorblind-dark"] [style*="color:#064e3b"] {
+    color: var(--metric-text-green) !important;
+}
+
+[data-theme="colorblind-dark"] [style*="color: #1e3a8a"],
+[data-theme="colorblind-dark"] [style*="color:#1e3a8a"] {
+    color: var(--metric-text-blue) !important;
+}
+
+[data-theme="colorblind-dark"] [style*="color: #78350f"],
+[data-theme="colorblind-dark"] [style*="color:#78350f"] {
+    color: var(--metric-text-yellow) !important;
+}
+
+[data-theme="colorblind-dark"] [style*="color: #581c87"],
+[data-theme="colorblind-dark"] [style*="color:#581c87"] {
+    color: var(--metric-text-purple) !important;
 }
