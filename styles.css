@@ -14,10 +14,34 @@
     --dark: #1e293b;
     --light: #f8fafc;
     --text: #334155;
+    --text-muted: #64748b;
     --bg: #ffffff;
     --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
     --border: #e2e8f0;
     --shadow: rgba(0, 0, 0, 0.1);
+    /* Semantic colors for status/tiers */
+    --success: #10b981;
+    --success-bg: #d1fae5;
+    --success-text: #065f46;
+    --warning: #f59e0b;
+    --warning-bg: #fef3c7;
+    --warning-text: #92400e;
+    --danger: #ef4444;
+    --danger-bg: #fee2e2;
+    --danger-text: #991b1b;
+    --info: #3b82f6;
+    --info-bg: #dbeafe;
+    --info-text: #1e40af;
+    /* Chart/metric colors - light variants */
+    --metric-bg-green: #f0fdf4;
+    --metric-text-green: #064e3b;
+    --metric-bg-blue: #eff6ff;
+    --metric-text-blue: #1e3a8a;
+    --metric-bg-yellow: #fef3c7;
+    --metric-text-yellow: #78350f;
+    --metric-bg-purple: #fae8ff;
+    --metric-text-purple: #581c87;
 }
 
 /* Dark mode */
@@ -28,10 +52,34 @@
     --dark: #0f172a;
     --light: #1e293b;
     --text: #e2e8f0;
+    --text-muted: #94a3b8;
     --bg: #0f172a;
     --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
     --border: #334155;
     --shadow: rgba(0, 0, 0, 0.5);
+    /* Semantic colors for status/tiers - dark mode */
+    --success: #34d399;
+    --success-bg: #064e3b;
+    --success-text: #a7f3d0;
+    --warning: #fbbf24;
+    --warning-bg: #78350f;
+    --warning-text: #fef3c7;
+    --danger: #f87171;
+    --danger-bg: #7f1d1d;
+    --danger-text: #fecaca;
+    --info: #60a5fa;
+    --info-bg: #1e3a8a;
+    --info-text: #bfdbfe;
+    /* Chart/metric colors - dark variants */
+    --metric-bg-green: #064e3b;
+    --metric-text-green: #a7f3d0;
+    --metric-bg-blue: #1e3a8a;
+    --metric-text-blue: #bfdbfe;
+    --metric-bg-yellow: #78350f;
+    --metric-text-yellow: #fef3c7;
+    --metric-bg-purple: #581c87;
+    --metric-text-purple: #e9d5ff;
 }
 
 /* Colorblind-safe mode (deuteranopia, protanopia, tritanopia safe) */
@@ -47,10 +95,34 @@
     --dark: #0f172a;
     --light: #1e293b;
     --text: #e2e8f0;
+    --text-muted: #94a3b8;
     --bg: #0f172a;
     --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
     --border: #334155;
     --shadow: rgba(0, 0, 0, 0.5);
+    /* Semantic colors for status/tiers - dark colorblind mode */
+    --success: #34d399;
+    --success-bg: #064e3b;
+    --success-text: #a7f3d0;
+    --warning: #fbbf24;
+    --warning-bg: #78350f;
+    --warning-text: #fef3c7;
+    --danger: #f87171;
+    --danger-bg: #7f1d1d;
+    --danger-text: #fecaca;
+    --info: #60a5fa;
+    --info-bg: #1e3a8a;
+    --info-text: #bfdbfe;
+    /* Chart/metric colors - dark variants */
+    --metric-bg-green: #064e3b;
+    --metric-text-green: #a7f3d0;
+    --metric-bg-blue: #1e3a8a;
+    --metric-text-blue: #bfdbfe;
+    --metric-bg-yellow: #78350f;
+    --metric-text-yellow: #fef3c7;
+    --metric-bg-purple: #581c87;
+    --metric-text-purple: #e9d5ff;
 }
 
 * {
